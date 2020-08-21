@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			outline: none;
+			font-family: "微软雅黑", arial;
+		}
+		
+		.demo1 {
+			width: 100%;
+			height: 100%;
+			/*display: none;*/
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 1s;
+		}
+		
+		.list11>li {
+			width: 60%;
+			height: 20px;
+			/*float: left;*/
+			margin: 6px 0 0 20px;
+		}
+		.list11>li:nth-child(1) {
+			width: 70%;
+			height: 20px;
+			/*float: left;*/
+			margin: 20px 0 0 20px;
+			position: relative;
+			top: 10px;
+		}
+		.list11>li:nth-child(2) {
+			width: 70%;
+			height: 20px;
+			/*float: left;*/
+			margin: 5px 0 0 20px;
+			position: relative;
+			top: 10px;
+		}
+		
+		.list11 span {
+			display: block;
+			/*float: left;*/
+			margin: 10px;
+			width: 40px;
+			height: 40px;
+			background: linear-gradient(45deg,grey,blue, grey);
+			border-radius: 50%;
+			font-size: 15px;
+			line-height: 20px;
+			text-align: center;
+			/*color: blue;*/
+			font-weight: bold;
+			/*border: 2px solid #FFFFFF;*/
+			/*transform: rotateZ(360deg);
+			animation: qiu1 0.5s 0.1s infinite linear;*/
+		}
+		.list11 span:nth-child(1) {
+			position: relative;
+			left: 240px;
+			top: 280px;
+		}
+		.list11 span:nth-child(2) {
+			position: relative;
+			left: 210px;
+			top: 245px;
+		}
+		/*@keyframes qiu1 {
+			from {
+				transform: rotateZ(360deg);
+			}
+			to {
+				transform: rotateZ(0);
+			}
+		}*/
+		
+		.list11 span:nth-child(3) {
+			position: relative;
+			left: 180px;
+			top: 210px;
+		}
+		
+		.list11 span:nth-child(4) {
+			position: relative;
+			left:120px;
+			top: 160px;
+		}
+		.list11 span:nth-child(5) {
+			position: relative;
+			left: 110px;
+			top: 115px;
+		}
+		.list11>li>span:last-child {
+			background: linear-gradient(135deg,grey,red,grey);
+			/*color: #FFFFFF;*/
+			position: relative;
+			left: 150px;
+			top:70px;
+		}
+		
+		.list11 {
+			background: linear-gradient(45deg, #ffcc42,#fbfc8f ,#ffcc42);
+			list-style: none;
+			width: 400px;
+			height: 400px;
+			border-radius: 50%;
+			margin: 30px 0 0 400px;
+			/*transform: rotateZ(360deg);
+			animation: list1 0.5s .01s infinite linear ;*/
+		}
+		/*@keyframes list1 {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}*/
+		
+		.btn1 {
+			width: 160px;
+			height: 50px;
+			background: linear-gradient(to right,#fff,red,#fff);
+			position: relative;
+			top: 500px;
+			left: 500px;
+			border-radius: 10px;
+			color:#fff;
+			font-weight: bold;
+			font-size: 25px;
+			line-height: 50px;
+			text-align: center;
+			
+		}
+		
+		.demo {
+			width: 100%;
+			height: 100%;
+			display: none;
+			background: linear-gradient(to right, #fff, #abdda8);
+			position: fixed;
+			top: 0;
+			right: 0;
+			z-index: 2;
+		}
+		
+		.list1>li {
+			width: 60%;
+			height: 40px;
+			/*float: left;*/
+			margin: 50px 0 0 200px;
+		}
+		
+		.list1>li:nth-child(2) {
+			width: 70%;
+			height: 40px;
+			/*float: left;*/
+			margin: 5px 0 0 20px;
+			position: relative;
+			top: 10px;
+		}
+		
+		.list1 span {
+			display: block;
+			/*float: left;*/
+			margin: 10px;
+			width: 40px;
+			height: 40px;
+			background: linear-gradient(45deg,grey,blue, grey);
+			border-radius: 50%;
+			font-size: 15px;
+			line-height: 20px;
+			text-align: center;
+			/*color: blue;*/
+			font-weight: bold;
+			/*border: 2px solid #FFFFFF;*/
+			transform: rotateZ(360deg);
+			animation: qiu1 0.5s 0.1s infinite ;
+		}
+		.list1 span:nth-child(1) {
+			position: relative;
+			left: 10px;
+			top: 50px;
+		}
+		
+		.list1 span:nth-child(2) {
+			position: relative;
+			left: 10px;
+			top: 50px;
+		}
+		
+		@keyframes qiu1 {
+			from {
+				transform: rotateZ(360deg);
+			}
+			to {
+				transform: rotateZ(0);
+			}
+		}
+		
+		.list1 span:nth-child(3) {
+			position: relative;
+			left: 10px;
+			top: 50px;
+		}
+		
+		.list1 span:nth-child(3) {
+			position: relative;
+			left: 12px;
+			top: 40px;
+		}
+		
+		.list1>li>span:last-child {
+			background: linear-gradient(to top, blue, red);
+			color: #FFFFFF;
+			position: relative;
+			top: 30px;
+			left: 20px;
+		}
+		
+		.list1 {
+			background: linear-gradient(45deg, #ffcc42,#fbfc8f ,#ffcc42);
+			list-style: none;
+			width: 400px;
+			height: 400px;
+			border-radius: 50%;
+			margin: 30px 0 0 400px;
+			transform: rotateZ(360deg);
+			animation: list1 0.001s .01s infinite  ;
+		}
+
+		
+		@keyframes list1 {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+		
+		.btn {
+			width: 200px;
+			height: 60px;
+			background: linear-gradient(to right, #fefffb, #002168);
+			position: relative;
+			/*	top: 10px;*/
+			left: 250px;
+			border-radius: 20%;
+			color: #333;
+			font-weight: bold;
+			font-size: 25px;
+			line-height: 60px;
+			text-align: center;
+		}
+		
+		.none {
+			display: none;
+		}
+		
+		.max {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: linear-gradient(to right, #e80202, #ef9795);
+			z-index: 3;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.3);
+		}
+		
+		.list {
+			width: 100%;
+			height: 100%;
+			background: #FFFFFF;
+			list-style: none;
+		}
+		
+		.list span {
+			display: block;
+			float: left;
+			margin: 5px;
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(45deg,grey,blue,grey);
+			border-radius: 50%;
+			font-size: 30px;
+			line-height: 60px;
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+			border: 2px solid #FFFFFF;
+			transform: rotateZ(360deg);
+			animation: qiu 1s 0.2s linear;
+		}
+		
+		@keyframes qiu {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+		
+		.list>li>span:last-child {
+			background: linear-gradient(135deg,grey, red,grey);
+			color: #FFFFFF;
+		}
+		
+		.list>li {
+			width: 100%;
+			height: 100px;
+			float: left;
+			margin: 200px 0 0 50px;
+		}
+		
+		.btncancle {
+			display: block;
+			width: 180px;
+			height: 60px;
+			background: #2B3479;
+			font-size: 30px;
+			line-height: 60px;
+			text-align: center;
+			font-weight: bold;
+			position: absolute;
+			top: 100px;
+			right: 200px;
+			color: #FFFFFF;
+		}
+		
+		.ppp {
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			height: 100px;
+			font-size: 50px;
+			line-height: 100px;
+			text-align: center;
+			font-weight: bold;
+			color: red;
+		}
+		.aa{
+			width: auto;
+			height: 60px;
+			font-size: 50px;
+			line-height: 60px;
+			text-align: center;
+			color: maroon;
+			margin: 0 0 0 600px;
+			position: relative;
+			top:700px;
+			right:500px;
+		}
+	</style>
+
+	<body>
+		<div class="demo1">
+			<button type="button" class="btn1">整一注</button>
+			<ul class="list11">
+				<!--<img src="img/1_.jpg"/>-->
+				<li>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</li>
+		<li>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</li>
+				<!--<li>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</li>-->
+			</ul>
+		</div>
+		<!--<button type="button" class="btn">来一组</button>-->
+		<div class="demo">
+			<p class="aa">开奖中</p>
+			<!--<button type="button" class="btn">来一组</button>-->
+			<ul class="list1">
+				
+				<!--<img src="img/1_.jpg"/>-->
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+
+			</ul>
+		</div>
+		<div class="max">
+			<p class="ppp">本次开奖号码！</p>
+			<button class="btncancle">再整一注！</button>
+			<ul class="list">
+				<!--<li></li>-->
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".btn1").click(function() {
+				$(".demo").show();
+				//				定时器：多少毫秒之后执行花括号里的的功能
+				setTimeout(function() {
+					$(".max").fadeIn(2000);
+					$(".list1").fadeOut(1000);
+					var $li = $("<li></li>");
+					for(a = 0; a < 7; a++) {
+						var nn = 37;
+						if(a == 6) {
+							nn = 16;
+						}
+						var x = put(nn, 1);
+						var $span = $("<span></span>");
+						$span.text(x);
+						$li.append($span);
+					}
+
+					$(".list>li").remove();
+					$(".list").append($li);
+					//$(".list").empty().append($li);
+
+				}, 2000)
+			})
+			$(".btncancle").click(function() {
+				$(".list1").show();
+				$(".max").hide();
+				$(".demo").hide();
+
+			})
+			//			$(".btn").click(function() {
+			//				$(".max").fadeIn(2000);
+			//				$(".list1").fadeOut(1000);
+			//				var $li = $("<li></li>");
+			//				for(a = 0; a < 7; a++) {
+			//					var nn = 37;
+			//					if(a == 6) {
+			//						nn = 16;
+			//					}
+			//					var x = put(nn, 1);
+			//					var $span = $("<span></span>");
+			//					$span.text(x);
+			//					$li.append($span);
+			//				}
+			//
+			//				$(".list>li").remove();
+			//				$(".list").append($li);
+			//				//$(".list").empty().append($li);
+			//				$(".btncancle").click(function() {
+			//
+			//              $(".max").hide();
+			//              $(".demo").hide();
+			//
+			//				})
+			//			})
+
+			function put(l, i) {
+				var num = Math.random() * l + i;
+				num = Math.floor(num);
+				if(num < 10) {
+					num = "0" + num;
+				}
+				return num;
+			}
+		})
+	</script>
+
+</html>
