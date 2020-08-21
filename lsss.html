@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			outline: none;
+			font-family: "微软雅黑", arial;
+		}
+		
+		.list1>li {
+			width: 60%;
+			height: 100px;
+			/*float: left;*/
+			margin: 50px 0 0 200px;
+		}
+		
+		.list1>li:nth-child(2) {
+			width: 70%;
+			height: 100px;
+			/*float: left;*/
+			margin: 5px 0 0 20px;
+			position: relative;
+			top: 10px;
+		}
+		/*@keyframes aaa {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+		*/
+		
+		.list1 span {
+			display: block;
+			/*float: left;*/
+			margin: 10px;
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(to top, #2b3479, #fad703);
+			border-radius: 50%;
+			font-size: 30px;
+			line-height: 60px;
+			text-align: center;
+			color: blue;
+			font-weight: bold;
+			border: 2px solid #FFFFFF;
+			transform: rotateZ(360deg);
+			animation: qiu1 0.5s 0.1s infinite linear;
+		}
+		
+		
+		.list1 span:nth-child(2) {
+			position: relative;
+			left: 100px;
+			top: 50px;
+		}
+			@keyframes qiu1 {
+			from {
+				transform: rotateZ(360deg);
+			}
+			to {
+				transform: rotateZ(0);
+			}
+		}
+		.list1 span:nth-child(3) {
+			position: relative;
+			left: 100px;
+			top: 50px;
+		}
+		
+		.list1 span:nth-child(3) {
+			position: relative;
+			left: 120px;
+			top: 30px;
+		}
+		
+		
+		.list1>li>span:last-child {
+			background: linear-gradient(to top, blue, red);
+			color: #FFFFFF;
+		}
+		
+		.list1 {
+			background: linear-gradient(to top, #555, #292929);
+			list-style: none;
+			width: 600px;
+			height: 600px;
+			border-radius: 50%;
+			transform: rotateZ(360deg);
+			animation: list1 0.5s .01s infinite linear ;
+		}
+		
+		@keyframes list1 {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+		/*.list>img{
+			float: left;
+			width: 1000px;
+			height: auto;
+			vertical-align: top;
+		}*/
+		
+		.btn {
+			width: 200px;
+			height: 60px;
+			background: linear-gradient(to right,#fefffb,#002168);
+			position: relative;
+			/*	top: 10px;*/
+			left: 250px;
+			border-radius: 20%;
+			color: #333;
+			font-weight: bold;
+			font-size: 25px;
+			line-height: 60px;
+			text-align: center;
+		}
+		
+		.none {
+			display: none;
+		}
+		
+		.max {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.3);
+		}
+		
+		.list {
+			width: 100%;
+			height: 100%;
+			background: #FFFFFF;
+			list-style: none;
+		}
+		
+		.list span {
+			display: block;
+			float: left;
+			margin: 5px;
+			width: 60px;
+			height: 60px;
+			background: linear-gradient(to top, #2b3479, #fad703);
+			border-radius: 50%;
+			font-size: 30px;
+			line-height: 60px;
+			text-align: center;
+			color: blue;
+			font-weight: bold;
+			border: 2px solid #FFFFFF;
+			transform: rotateZ(360deg);
+			animation: qiu 1s 0.2s linear;
+		}
+		
+		@keyframes qiu {
+			from {
+				transform: rotateZ(0);
+			}
+			to {
+				transform: rotateZ(360deg);
+			}
+		}
+		
+		.list>li>span:last-child {
+			background: linear-gradient(to top, blue, red);
+			color: #FFFFFF;
+		}
+		
+		.list>li {
+			width: 100%;
+			height: 100px;
+			float: left;
+			margin: 200px 0 0 50px;
+		}
+		
+		.btncantel {
+			width: 100px;
+			height: 30px;
+			background: #2B3479;
+			font-size: 16px;
+			line-height: 30px;
+			text-align: center;
+			position: relative;
+			top: 300px;
+			left: 800px;
+			color: #FFFFFF;
+		}
+		.ppp{
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+			height: 100px;
+			font-size: 50px;
+			line-height: 100px;
+			text-align: center;
+			font-weight: bold;
+			color: red;
+		}
+	</style>
+
+	<body>
+		<button type="button" class="btn">来一组</button>
+		<div class="demo">
+			<!--<button type="button" class="btn">来一组</button>-->
+			<ul class="list1">
+				<!--<img src="img/1_.jpg"/>-->
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+				<li>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+					<span>***</span>
+				</li>
+				
+
+			</ul>
+		</div>
+		<div class="max">
+			<p class="ppp">本次开奖号码！</p>
+			<button class="btncantel">取消</button>
+			<ul class="list">
+				<!--<li></li>-->
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".btn").click(function() {
+				$(".max").fadeIn(2000);
+				$(".list1").fadeOut(2000);
+				var $li = $("<li></li>");
+				for(a = 0; a < 7; a++) {
+					var nn = 37;
+					if(a == 6) {
+						nn = 16;
+					}
+					var x = put(nn, 1);
+					var $span = $("<span></span>");
+					$span.text(x);
+					$li.append($span);
+				}
+
+				$(".list>li").remove();
+				$(".list").append($li);
+				//$(".list").empty().append($li);
+				$(".btncantel").click(function() {
+					$(".max").fadeOut(2000);
+					$(".list1").fadeIn(2000);
+					
+				})
+			})
+
+			function put(l, i) {
+				var num = Math.random() * l + i;
+				num = Math.floor(num);
+				if(num < 10) {
+					num = "0" + num;
+				}
+				return num;
+			}
+		})
+	</script>
+
+</html>

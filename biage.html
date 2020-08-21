@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+				font-family: "微软雅黑", arial;
+				outline: none;
+			}
+			.max{
+				width: 100%;
+				height: 100%;
+				background:linear-gradient(to right,#f2edaf,#a96463) ;
+				position: relative;
+				z-index: 1;
+			}
+			.max>p{float: left;
+					width: 300px;
+					height: 20px;
+					background: transparent;
+					font-size: 20px;
+					line-height: 20px;
+					text-align: center;
+					font-weight: bold;
+					color: #000000;
+					position: relative;
+					left: 800px;
+			}
+			.k {
+				height: 30px;
+			}
+			
+			.name {
+				margin: 0 0 0 200px;
+				width: 200px;
+				height: 30px;
+				border: 1px solid dodgerblue;
+			}
+			
+			.grade {
+				margin: 0 0 0 20px;
+				width: 200px;
+				height: 30px;
+				border: 1px solid dodgerblue;
+			}
+			
+			.btn {
+				display: block;
+				margin: 0 0 0 20px;
+				width: 70px;
+				height: 30px;
+				background: darkslateblue;
+				font-size: 20px;
+				line-height: 28px;
+				text-align: center;
+				border-radius: 10%;
+				color: #FFFFFF;
+				position: relative;
+				left: 620px;
+				top: -30px;
+			}
+			
+			.border {
+				border-color: red;
+			}
+			
+			.other {
+				width: 100%;
+				height: 100%;
+				background: #FFFFFF;
+				position: fixed;
+				z-index: 2;
+				display: none;
+			}
+			
+			.in {
+				width: 300px;
+				height: 300px;
+				background: linear-gradient(to right,#fff,#c9c9c9);
+				margin: 50px auto 0;
+				border: 1px solid #000000;
+				position: relative;
+			}
+			.cancel{display: block;
+				width: 20px;
+				height: 20px;
+				background: ivory;
+				font-size: 18px;
+				line-height: 20px;
+				text-align: center;
+				color: #000000;
+				position: absolute;
+				top: 0;
+				right: 0;
+				
+			}
+			.changenm{
+				display: block;
+				width: 200px;
+				height: 30px;
+				background: transparent;
+				border:2px solid #456eb6;
+				margin: 50px auto 0;
+			}
+			.changegr{
+				display: block;
+				width: 200px;
+				height: 30px;
+				background: transparent;
+				border:2px solid #456eb6;
+				margin: 20px auto 0;
+			}
+			.notarize{
+				display: block;
+				width: 160px;
+				height: 30px;
+				background: linear-gradient(to right,#069309,#09c70f);
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+				color: #FFFFFF;
+				margin: 20px auto 0;
+			}
+			.list {
+				width: 100%;
+				height: auto;
+				list-style: none;
+			}
+			
+			.list span:nth-child(1) {
+				background: #b6cff3;
+			}
+			
+			.list span {
+				display: block;
+				float: left;
+				width: 15%;
+				height: auto;
+				font-size: 15px;
+				line-height: 30px;
+				text-align: center;
+				color: #555;
+				background: oldlace;
+				margin: 1px 0 0 1px;
+			}
+			
+			.btnchange {
+				display: block;
+				width: 150px;
+				height: 28px;
+				float: left;
+				border: 1px solid black;
+				background: linear-gradient(to left,#fff,red);
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+				color: #000000;
+				border-radius: 5%;
+			}
+			.a{
+				background: mediumaquamarine !important;
+				color: #FFFFFF;
+				font-weight: bold;
+			}
+			.btndelet {
+				display: block;
+				width: 150px;
+				height: 28px;
+				float: left;
+				border: 1px solid black;
+				background: linear-gradient(to left,#fff,red);
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+				color: #000;
+				border-radius: 5%;
+			}
+			
+			.list>li {
+				float: left;
+				width: 1000px;
+				height: 30px;
+				margin: 0 0 0 80px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="other">
+			<div class="in">
+				<input type="text" placeholder="姓名" class="changenm" />
+				<input type="text" placeholder="成绩" class="changegr" />
+				<button type="button" class="notarize">确认</button>
+				<button type="button" class="cancel">&Chi;</button>
+
+			</div>
+		</div>
+		<div class="max">
+			<p>阶段成绩单</p>
+			<div class="k"></div>
+			<input type="text" class="name" />
+			<input type="text" class="grade" />
+			<button type="button" class="btn">增加</button>
+			<ul class="list ">
+
+				<li>
+					<span>序号</span>
+					<span class="a">姓名</span>
+					<span class="a">成绩</span>
+					<span class="a">-</span>
+					<span class="a">-</span>
+				</li>
+
+			</ul>
+
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			$(".name").focus();
+			var x = 1;
+			var a = 0;
+			$(".btn").click(function() {
+				put();
+			})
+
+			$(".name").keyup(function() {
+				var nm = $(".name").val();
+				if(nm == "") {
+					$(".name").addClass("border");
+					return;
+				} else {
+					$(".name").removeClass("border");
+				}
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					$(".grade").focus();
+				}
+
+			})
+			$(".grade").keyup(function() {
+				var gd = $(".grade").val();
+				if(gd == "") {
+					$(".grade").addClass("border");
+					return;
+				} else {
+					$(".grade").removeClass("border");
+				}
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					put();
+				}
+
+			})
+
+			function put() {
+				var nm = $(".name").val();
+				var gd = $(".grade").val();
+				if(nm == '') {
+					$(".name").addClass("border");
+					return;
+
+				} else {
+					$(".name").removeClass("border");
+				}
+				if(gd == "") {
+					$(".grade").addClass("border");
+					return;
+				} else {
+					$(".grade").removeClass("border");
+				}
+				var $li = $("<li></li>");
+				var $spannm = $("<span></span>");
+				var $del = $("<span></span>");
+				$del.text(x);
+				x = x + 1;
+				$spannm.text(nm);
+				var $spangd = $("<span></span>");
+				$spangd.text(gd);
+				var $btnchange = $("<button type='button' class='btnchange'>修改</button>");
+				var $btndelet = $("<button type='button' class='btndelet'>删除</button>");
+				$btndelet.click(function() {
+					$(this).parent().remove();
+				})
+				$btnchange.click(function() {
+					$(".other").show();
+					var name = $(this).prev().prev().text();
+					$(".changenm").val(name);
+					a = $(this).parent().index();
+					var grade = $(this).prev().text();
+					$(".changegr").val(grade);
+				})
+				$li.append($del, $spannm, $spangd, $btnchange, $btndelet);
+				$(".list").append($li);
+				$(".name,.grade").val("");
+				$(".name").focus();
+			}
+			$(".cancel").click(function() {
+				$(".other").hide();
+
+			})
+			$(".notarize").click(function() {
+				$(".other").hide();
+				var nm1 = $(".changenm").val();
+				var gr1 = $(".changegr").val();
+				$(".list>li").eq(a).find("span").eq(1).text(nm1);
+				$(".list>li").eq(a).find("span").eq(2).text(gr1);
+			})
+		})
+	</script>
+
+</html>
