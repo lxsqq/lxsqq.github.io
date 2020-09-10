@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			
+			.max {
+				width: 1200px;
+				height: auto;
+				margin: 0 auto;
+				min-width: 1200px;
+				overflow: hidden;
+			}
+			
+			.max>p {
+				float: left;
+				width: 15%;
+				height: auto;
+				margin: 0 0 10px 10px;
+				cursor: pointer;
+				border-bottom: 2px solid gold;
+			}
+			
+			.max img {
+				display: block;
+				width: 40%;
+				height: 80px;
+				transition: 1.5s;
+			}
+			.max img:hover{
+				transform: scale(1.2);
+			}
+			
+			.contant {
+				width: 1200px;
+				height: auto;
+				background: whitesmoke;
+				margin: 40px auto 0;
+				min-width: 1200px;
+			}
+			
+			.k {
+				height: 20px;
+			}
+			.contant>p{
+				width: 100%;
+				height: auto;
+				margin: 0 0 10px 0;
+				font-size: 14px;
+				
+				
+			}
+			.contant>p:nth-child(1){
+				font-size: 20px;
+				color: royalblue;
+				font-weight: bold;
+			}
+			.tip{
+				width: 1200px;
+				height: 30px;
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+				color: #000000;
+				cursor: pointer;
+			}
+			.title{
+			     width: 200px;
+			     height: 20px;
+			     font-size: 20px;
+			     line-height: 20px;
+			     text-align: center;
+			     border-bottom: 2px dotted lightslategrey;
+			     margin: 20px auto;
+			     color: orange;
+			     cursor: pointer;
+			     transition: 0.5s;
+			}
+			.title:hover{
+				color: orangered;
+				transform: scale(1.5);
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+
+	</head>
+
+	<body>
+		<div class="k"></div>
+		<p class="title"> <b><i>giaogiao星座</i></b></p>
+		<div class="max">
+			<div class="clear"></div>
+		</div>
+		<p class="tip" ><b><i>点击星座查询!!!</i></b></p>
+		<div class="contant">
+
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			$(".tip").click(function(){
+				alert("别点我,点他奥")
+			})
+			
+			$.ajax({
+				type: "get",
+				url: "https://api.jisuapi.com/astro/all",
+				async: true,
+				data: {
+					"appkey": " d784fc9d6ce0d1d3"
+				},
+				dataType: "JSONP",
+				success: function(res) {
+					//					console.log(res);
+					var re = res.result;
+					for(var k in re) {
+						var $img = $("<img />");
+						$img.attr("src", re[k]["pic"])
+						var $p = $("<p></p>");
+						$p.text(re[k]["astroname"] + re[k]["date"]);
+						$p.click(function() {
+							$(".contant").empty();
+							getAstroInfo($(this).index() + 1);
+						})
+
+						$p.append($img)
+						$(".max").append($p);
+
+					}
+				}
+			});
+
+			function getAstroInfo(idx) {
+				$.ajax({
+					type: "get",
+					url: "https://api.jisuapi.com/astro/fortune",
+					async: true,
+					data: {
+						"astroid": idx,
+						"appkey": " d784fc9d6ce0d1d3"
+					},
+					dataType: "JSONP",
+					success: function(res) {
+						var re = res.result;
+						var e1=re.month;
+						console.log(re)
+						//for(var k in e1) {
+							var $pp=$("<p></p>");
+							$pp.text(re["astroname"])
+                          var $p=$("<p></p>");
+                          $p.text("本月爱情:"+e1["date"]+e1["love"])
+                          var $p1=$("<p></p>");
+                          $p1.text("本月财运:"+e1["money"]);
+                          var e2=re.week;
+                          var $p2=$("<p></p>");
+                          $p2.text("本周运势:"+e2["career"]+e2["health"]+e2["love"])
+						
+						$(".contant").append($pp,$p,$p1,$p2);
+					}
+
+				});
+			}
+			
+
+		})
+	</script>
+
+</html>
