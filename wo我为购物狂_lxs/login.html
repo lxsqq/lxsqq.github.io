@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			*{margin: 0;
+			padding: 0;
+			outline: none;}
+			.max{
+				width: 100%;
+				height: 100%;
+				background: aliceblue;
+				
+			}
+			.top{
+				width: 1200px;
+				height: 100px;
+				margin: 0 auto;
+				background: transparent;
+				/*border-bottom: 1px solid dimgray;*/
+			}
+			.top>img{
+				float: left;
+				width: 80px;
+				height: 80px;
+				vertical-align: top;
+			}
+			.logo{
+				float: left;
+				width: 600px;
+				height: 100px;
+				font-size: 45px;
+				/*line-height: 100px;*/
+				text-align: left;
+				color: #000;
+				font-weight: bold;
+			}
+			.logo>i{
+				display: block;
+				font-size: 25px;
+				color: #555;
+			}
+			.a{
+				float: right;{
+					width: 600px;
+					height: 100px;
+					font-size: 30px;
+					line-height: 100px;
+					text-align: left;
+					color: #555;
+					/*margin: 0 400px 0 0;*/
+				}
+			}
+			.dex{
+				width:610px;
+				height: 460px;
+				background: rgba(0,0,0,0.2);
+				padding: 1px 0 0 0;
+				position: fixed;
+				top: 120px;
+				left: 400px;
+			}
+			.farme{
+				width: 580px;
+				height: 430px;
+				background: #fff;
+				margin: 4px auto 0;
+				padding: 10px;
+			}
+			.ftop{
+				width: 100%;
+				height: 10%;
+				border-bottom: 2px solid darkgrey;
+				background: #fff;
+				position: relative;
+			}
+			.ftop>p{
+				width: 100%;
+				height: 100%;
+				font-size: 16px;
+				
+				text-align: left;
+				font-weight: bold;
+				color: #000;
+			}
+			.no{display: block;
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				background: transparent;
+				outline: none;
+				border: none;
+				font-size: 16px;
+				text-decoration: none;
+				color: #555;
+			}
+			.p1{
+				width: 100%;
+				height: auto;
+				margin: 20px auto
+				;
+				font-size: 14px;
+			}
+			.p2{
+				font-size: 14px;
+			}
+			.p3{
+				font-size: 14px;
+			}
+			.p3>p>a{
+				color:#333;
+				
+			}
+			.agree{display: block;
+				width: 170px;
+				height: 30px;
+				background: orangered;
+				font-size: 13px;
+				line-height: 30px;
+				text-align: center;
+				color: #fff;
+				outline: none;
+				border: none;
+				margin: 20px auto;
+			}
+			.mid{
+				width: 1200px;
+				height: 500px;
+				background: #fff;
+				margin: 0 auto;
+				border-top:2px solid dodgerblue !important;
+				border: 1px solid darkgrey;
+		
+			}
+			.form{
+				/*display: block;*/
+				width: 600px;
+				height: 400px;
+				background: #fff;
+				margin: 0 auto;
+				padding: 100px 0 0 0;
+				text-align: center;
+				/*position: relative;*/
+			}
+			.row{
+				/*display: inline-block;*/
+				width: 400px;
+				height: 40px;
+				margin: 30px auto 0;
+				border: 1px solid #555;
+				
+			}
+			.row>p{
+				float: left;
+				width: 30%;
+				height: 40px;
+				line-height: 40px;
+				font-size: 14px;
+				text-align: center;
+				color: #333;
+			}
+			.row>input{
+				display: block;
+				float: left;
+				width: 70%;
+				height: 40px;
+				border: none;
+				background: #fff;
+				outline: none;
+			}
+			.i>input:last-child{
+				width: 30%;
+				background: whitesmoke !important;
+			}
+			.i>input{
+				width: 40%;
+				
+			}
+			.submit{
+				width: 300px;
+				height: 40px;
+				background: orangered;
+				font-size: 18px;
+				line-height: 40px;
+				color: #fff;
+				text-align: center;
+				margin: 50px 0 0 0;
+				outline: none;
+				border: none;
+			}
+			.welcome{
+				width: auto;
+				height: 20px;
+				font-size: 13px;
+				line-height: 20px;
+				color: red;
+			}
+			.row_bt{
+				width: 100%;
+				height: 20px;
+				background: transparent;
+				text-align: left;
+				margin: 30px 0 0 0;
+			}
+			.row_bt>img{
+				width: 20px;
+				height: 20px;
+				vertical-align: top;
+			}
+			.row_bt>p{
+				display: inline-block;
+				width: 100;
+				height: 20px;
+				font-size: 16px;
+				line-height: 20px;
+				color: #000;
+				font-weight: bold;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="dex">
+			
+			<div class="farme">
+				<div class="ftop">
+				<p>注册协议</p>
+				<a href="one.html" class="no">x</a>
+				</div>
+				<div class="p1">
+					<p>
+				【<b>审慎阅读</b>】您在申请注册流程中点击同意前，应当认真阅读以下协议。<b>请您务必审慎阅读、充分理解协议中相关条款内容，其中包括</b>：<br>
+				<b>1. 与您约定免除或限制责任的条款；</b><br>
+				<b>2. 与您约定法律适用和管辖的条款；</b><br>
+				<b>3. 其他以粗体下划线标识的重要条款。</b>
+			</p>
+				</div>
+				<div 
+					class="p2">
+					<p style="margin-top:22px;">
+				如您对协议有任何疑问，可向平台客服咨询。<br>
+				【<b>特别提示</b>】当您按照注册页面提示填写信息、阅读并同意协议且完成全部注册程序后，即表示您已充分阅读、理解并接受协议的全部内容。
+			</p>
+				</div>
+				<div class="p3">
+					<p style="margin-top:22px;">
+				<b>阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序。</b><br>
+				<a href="####" target="_blank">《XLshopping会员章程》</a><br>
+				<a href="####" target="_blank">《XLshopping支付协议》</a><br>
+				<a href="####" target="_blank">《XLshopping隐私政策》</a><br>
+                <a href="####" target="_blank">《支付隐私政策》</a><br>
+				<a href="####" target="_blank">《XLshopping联盟在线协议》</a><br>
+			</p>
+				</div>
+				<button type="button" class="agree">
+					同意并继续
+				</button>
+			</div>
+		</div>
+		<div class="max">
+			<div class="top">
+				<img src="img/ico_trip.png"/>
+				<p class="logo">小李闪购 <br /><i>XLshopping</i></p>
+				<p class="a">欢迎注册</p>
+			</div>
+			<div class="mid">
+				<form class="form">
+					<p class="welcome"><b>欢迎注册<i>XLshopping</i>!</b></p>
+                  <div class="row">
+                  	<p>手机号码</p>
+				<input type="text" class="phonen"placeholder="建议使用常用手机号" maxlength="11"/>
+                  	
+                  </div>
+                 <div class="row i">
+                 	<p>手机验证码</p>
+				<input type="text" class="num"placeholder="请输入手机验证码" maxlength="11"/>
+                 	<input type="button" value="获取短信验证码" class="gain" />
+                 </div>
+               <div class="row">
+               	<p>设置密码</p>
+				<input type="password" class="passw"placeholder="请设置密码" maxlength="11"/>
+               	
+               </div>
+				<input type="button" value="提交注册" class="submit" />
+                <div class="row_bt">
+				<img src="img/ico_trip.png"/>
+               <p>XLshopping</p>
+                </div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+              $(function(){
+              	$(".agree").click(function(){
+              		$(".dex").fadeOut(100);
+              	})
+              })
+	</script>
+</html>
