@@ -1,10 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8" />
 		<title></title>
+		<style type="text/css">
+			.welcome {
+				width: 1200px;
+				height: auto;
+				overflow: hidden;
+				min-width: 1200px;
+			}
+			
+			.a {
+				width: 300px;
+				height: 300px;
+				background: url(img/ooooooooooooooo.jpg);
+				background-size: 100% 100%;
+				margin: 40px 0 0 30px;
+				position: relative;
+				float: left;
+				transition: .5s;
+				overflow: hidden;
+			}
+			.a:hover{
+				transform: translateY(-10px);
+			}
+		</style>
 	</head>
+
 	<body>
-		
+		<div class="welcome">
+			<h3 style="widows: 100%;height: 30px;font-size: 25px;line-height: 30px;
+				text-align: center;">
+				欢迎入驻</h3>
+
+			<div class="a">
+				<div href="####" style="
+					width: 100%;height: 100%;
+				background:rgba(0,0,0,0.3) ;
+				
+				text-decoration: none;
+			    position: absolute;
+			    top: 0;
+				text-align: center;
+					">
+					<p style="widows: 100%;height: 20%;color:#fff;font-size: larger;text-align: center;"><b>平台商家</b></p>
+					<button class="btn" type="button" style="
+						width: 30%;height: 10%;color: white;border-radius:4px ;margin-top:80px ;
+						outline: none;
+						border-color:white;background:rgba(255,255,255,0.3);font-size: 12px;">立即入驻</button>
+				</div>
+			</div>
+			<div class="a">
+				<div href="####" style="
+					width: 100%;height: 100%;
+				background:rgba(0,0,0,0.3) ;
+				
+				text-decoration: none;
+			    position: absolute;
+			    top: 0;
+				text-align: center;
+					">
+					<p style="widows: 100%;height: 20%;color:#fff;font-size: larger;text-align: center;"><b>xl周边</b></p>
+					<button class="btn" type="button" style="
+						width: 30%;height: 10%;color: white;border-radius:4px ;margin-top:80px ;
+						outline: none;
+						border-color:white;background:rgba(255,255,255,0.3);font-size: 12px;">立即入驻</button>
+				</div>
+			</div>
+			<div class="a">
+				<div href="####" style="
+					width: 100%;height: 100%;
+				background:rgba(0,0,0,0.3) ;
+				
+				text-decoration: none;
+			    position: absolute;
+			    top: 0;
+				text-align: center;
+					">
+					<p style="widows: 100%;height: 20%;color:#fff;font-size: larger;text-align: center;"><b>自营合作</b></p>
+					<button class="btn" type="button" style="
+						width: 30%;height: 10%;color: white;border-radius:4px ;margin-top:80px ;
+						outline: none;
+						border-color:white;background:rgba(255,255,255,0.3);font-size: 12px;">立即入驻</button>
+				</div>
+			</div>
+		</div>
+		<p style="text-decoration:underline;width: 100%;height: 40px;font-size: 15px;text-align: center;"><b><i>XIAOLI很高兴与您合作</i></b></p>
 	</body>
+    <script type="text/javascript">
+    	var $btn=document.getElementsByClassName("btn")[0];
+    	$btn.addEventListener("click",fun,false);
+    	function fun(){
+    		alert("很高兴你点我！");
+    	}	var $btn=document.getElementsByClassName("btn")[1];
+    	$btn.addEventListener("click",fun,false);
+    	function fun(){
+    		alert("你咋还点我！");
+    	}
+    		var $btn=document.getElementsByClassName("btn")[2];
+    	$btn.addEventListener("click",fun,false);
+    	function fun(){
+    		alert("我还没写完呢！");
+    	}
+    </script>
 </html>

@@ -1371,10 +1371,30 @@
 .bottom_cantent>div>h6{
 	font-size: large;
 }
+.bottom_cantent>div>p{
+	font-size: 12px;
+}
 .bottom_cantent>div>p>a{
 	text-decoration: none;
 	color: gray;
 }
 .bottom_cantent>div>p>a:hover{
 	color: orange;
+}
+
+.side_list>li>div{
+	display: block !important;
+	transform: translateX(200%);
+	transition: .3s;
+	background: transparent;
+}
+.side_list>li>p{
+	position: relative;
+	z-index: 99;
+	background: #959da7;
+}
+
+.side_list>li>p:hover+div{
+	transform: translateX(0%);
+	background: orange;
 }
