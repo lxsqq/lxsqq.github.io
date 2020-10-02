@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.list {
+				width: 800px;
+				height: auto;
+				background: whitesmoke;
+				margin: 0 auto;
+				display: block;
+				list-style: none;
+			}
+			
+			.list>li {
+				width: 100%;
+				height: 20px;
+				margin: 10px 0 0 0;
+				background: #FFFFFF;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.list>li>span {
+				float: left;
+				display: block;
+				width: 9%;
+				height: auto;
+			}
+			
+			.list>li>span:nth-child(4) {
+				display: block;
+				width: 19%;
+			}
+			
+			.k {
+				height: 10px;
+			}
+			
+			.h {
+				width: 100%;
+				height: 20px;
+				font-size: 12px;
+				line-height: 20px;
+				text-align: center;
+			}
+			
+			.change {
+				width: 11%;
+				height: auto;
+				float: right;
+			}
+			
+			.delete {
+				width: 11%;
+				height: auto;
+				float: right;
+			}
+			
+			.caLyear {
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.3);
+				position: fixed;
+				top: 0;
+				right: 0;
+				z-index: 2;
+				display: none;
+			}
+			
+			.sure_c {
+				width: 400px;
+				height: 400px;
+				margin: 50px auto;
+				background: #F5F5F5;
+				padding: 20px 0 0 0;
+				text-align: center;
+			}
+			
+			.sure_c_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #ADFF2F;
+				outline: none;
+			}
+			
+			.sure_no_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #F5F5F5;
+				outline: none;
+			}
+			
+			.sure_c>p {
+				height: 20px;
+				margin: 10px 0 0;
+			}
+			
+			.sure_c>p>input {
+				height: 20px;
+				width: 60%;
+				outline: none;
+			}
+			
+			.addstudent {
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.3);
+				position: fixed;
+				top: 0;
+				right: 0;
+				z-index: 4;
+				display: none;
+				min-width: 1200px;
+			}
+			
+			.addstudent_c {
+				width: 400px;
+				height: 400px;
+				margin: 50px auto;
+				background: #F5F5F5;
+				padding: 20px 0 0 0;
+				text-align: center;
+			}
+			
+			.addsure_c_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #ADFF2F;
+				outline: none;
+			}
+			
+			.addsure_no_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #F5F5F5;
+				outline: none;
+			}
+			
+			.addstudent_c>p {
+				height: 20px;
+				margin: 10px 0 0;
+			}
+			
+			.addstudent_c>p>input {
+				height: 20px;
+				width: 60%;
+				outline: none;
+			}
+			
+			.add {
+				display: block;
+				margin: 10px auto;
+				width: 100%;
+				height: 40px;
+				background: orange;
+				color: black;
+				font-family: "仿宋";
+				font-size: 20px;
+				line-height: 40px;
+				text-align: center;
+				outline: none;
+				border-color: whitesmoke;
+				/*position: absolute;
+				bottom: 10px;
+				left: 50%;
+				margin-left: -100px;*/
+			}
+			
+			.addstudent_c>p:nth-of-type(3) {
+				text-indent: -13px;
+			}
+			
+			.sure_c>p:nth-of-type(8) {
+				text-indent: -13px;
+			}
+			
+			.bordercc {
+				color: red !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="addstudent">
+			<div class="addstudent_c">
+
+				<p>姓名:<input type="txet" class="addname" /></p>
+				<p>密码:<input type="txet" class="addpassword" placeholder="字母数字结合" /></p>
+				<p>手机号:<input type="txet" class="addphonenum" /></p>
+				<p>语文:<input type="txet" class="addchina" /></p>
+				<p>数学:<input type="txet" class="addmath" /></p>
+				<p>英语:<input type="txet" class="addengl" /></p>
+				<p>备注:<input type="txet" class="addand" maxlength="50" placeholder="最长50个字符" /></p>
+				<button type='button' class="addsure_no_b">取消</button>
+
+				<button type='button' class="addsure_c_b">确认添加</button>
+			</div>
+		</div>
+		<div class="caLyear">
+			<div class="sure_c">
+
+				<p>姓名:<input type="txet" class="cname" /></p>
+				<p>密码:<input type="txet" class="cpassword" /></p>
+				<p>序号:<input type="txet" class="cidx" /></p>
+				<p>语文:<input type="txet" class="cchina" /></p>
+				<p>数学:<input type="txet" class="cmath" /></p>
+				<p>英语:<input type="txet" class="cengl" /></p>
+				<p>备注:<input type="txet" class="cand" /></p>
+				<p>手机号:<input type="txet" class="cphonenum" /></p>
+
+				<button type='button' class="sure_no_b">取消</button>
+
+				<button type='button' class="sure_c_b">确认修改</button>
+			</div>
+		</div>
+		<div class="k"></div>
+		<a href="index1.html" style="text-decoration: none;">首页</a>
+		<h5 class="h">您的学生信息如下</h5>
+		<ul class="list">
+			<li>
+				<span>姓名</span>
+				<span>密码</span>
+				<span>学号</span>
+				<span>手机号</span>
+				<span>语文</span>
+				<span>数学</span>
+				<span>英语</span>
+				<span>备注</span>
+				<span>-</span>
+				<span>-</span>
+
+			</li>
+			<button class="add" type="button"><b>添加学生</b></button>
+		</ul>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			var cg;
+
+			selectALL();
+			//      全查询函数
+			function selectALL() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/demo.find.lxl/selectAll",
+					async: true,
+					success: function(res) {
+
+						var resObj = JSON.parse(res);
+						console.log(resObj);
+						for(var k in resObj.result) {
+							$li = $("<li></li>");
+							$spanNm = $("<span></span>");
+							$spanPw = $("<span></span>");
+							$spanMt = $("<span></span>");
+							$spanId = $("<span></span>");
+							$spanCn = $("<span></span>");
+							$spanRm = $("<span></span>");
+							$spanEg = $("<span></span>");
+							$spanPn = $("<span></span>");
+							$spanPw.text(resObj.result[k].password);
+							$spanMt.text(resObj.result[k].math);
+							$spanId.text(resObj.result[k].idex);
+							$spanCn.text(resObj.result[k].china);
+							$spanEg.text(resObj.result[k].engl);
+							$spanNm.text(resObj.result[k].username);
+							$spanRm.text(resObj.result[k].and);
+							$spanPn.text(resObj.result[k].phonenum);
+							$spanDelbutton = $("<button type='button' class='delete'>删除</button>");
+							$spanDelbutton.on("click", function() {
+								var a = $(this).parent().find("span").eq(0).text();
+								$.ajax({
+									type: "get",
+									url: "http://localhost:8080/demo.find.lxl/del",
+									async: true,
+									data: {
+										username: a,
+									},
+									success: function(re) {
+										alert(re);
+										window.location.href = "tcselectAll.html";
+									},
+									error: function(e) {
+										console.log(e)
+									}
+								});
+							})
+
+							$spanChbutton = $("<button type='button'class='change'>修改</button>");
+							$spanChbutton.click(function() {
+								//修改蒙层
+								$(".caLyear").show();
+								var nm = $(this).parent().find("span").eq(0).text();
+								var pw = $(this).parent().find("span").eq(1).text();
+								var id = $(this).parent().find("span").eq(2).text();
+								var cn = $(this).parent().find("span").eq(4).text();
+								var mt = $(this).parent().find("span").eq(5).text();
+								var eg = $(this).parent().find("span").eq(6).text();
+								var cp = $(this).parent().find("span").eq(7).text();
+								var pn = $(this).parent().find("span").eq(3).text();
+								$(".cname").val(nm);
+								$(".cpassword").val(pw);
+								$(".cidx").val(id);
+								$(".cchina").val(cn);
+								$(".cmath").val(mt);
+								$(".cengl").val(eg);
+								$(".cand").val(cp);
+								$(".cphonenum").val(pn);
+
+								$(".cname").keyup(function() {
+									var ent = event.which || event.keyCode;
+									if(ent == 13) {
+										var addnm = $(".cname").val().trim();
+										var cn = /^[\u4e00-\u9fa5]{2,4}$/
+
+										var cc = cn.test(addnm);
+										console.log(cc);
+
+										if(cc == false) {
+											$(".cname").addClass("bordercc");
+											return;
+										} else {
+											$(".cname").removeClass("bordercc");
+											$(".cpassword").focus();
+										}
+									}
+								})
+
+								$(".cpassword").keyup(function() {
+									var ent = event.which || event.keyCode;
+									if(ent == 13) {
+										var addpw = $(".cpassword").val().trim();
+										var cn = /^[A-z][0-9]{6,16}$/
+										var cc = cn.test(addpw);
+										if(cc = true) {
+											$(".cpassword").removeClass("bordercc");
+											$(".cchina").focus();
+										} else {
+											$(".cpassword").addClass("bordercc");
+										}
+									}
+
+								})
+
+								$(".cphonenum").keyup(function() {
+									var ent = event.which || event.keyCode;
+									if(ent == 13) {
+										var addph = $(".cphonenum").val().trim();
+										var cn = /^[0-9]{11}$/
+										var cc = cn.test(addph);
+										console.log(cc);
+										if(cc == true) {
+											$(".cphonenum").removeClass("bordercc");
+
+										} else {
+											$(".cphonenum").addClass("bordercc");
+										}
+									}
+
+								})
+
+//								$(".cand").keyup(function() {
+//									var ent = event.which || event.keyCode;
+//									if(ent == 13) {
+//										var addand = $(".addand").val();
+//										
+//
+//									}
+//								})
+
+								$(".cchina, .cmath, .cengl").keyup(function() {
+									var ent = event.which || event.keyCode;
+									console.log(ent);
+									if(ent == 13) {
+										var v = $(this).val();
+										if(Number(v) <= 100 && Number(v) >= 0) {
+											$(this).removeClass("bordercc");
+											$(this).parent().next().find("input").focus();
+										} else {
+											$(this).addClass("bordercc");
+										}
+
+									}
+								})
+
+							})
+							$li.append($spanNm, $spanPw, $spanId, $spanPn, $spanCn, $spanMt, $spanEg, $spanDelbutton, $spanChbutton);
+							$(".list").append($li);
+							$(".add").before($li);
+
+						}
+					}
+				});
+			}
+			//			连接后台?
+			$(".sure_c_b").click(function() {
+				console.log($(".cand").val())
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/demo.find.lxl/change",
+					async: true,
+					data: {
+						username: $(".cname").val(),
+						password: $(".cpassword").val(),
+						idex: $(".cidx").val(),
+						china: $(".cchina").val(),
+						math: $(".cmath").val(),
+						engl: $(".cengl").val(),
+						and: $(".cand").val(),
+						phonenum: $(".cphonenum").val()
+					},
+					success: function(res) {
+						alert(res);
+						window.location.href = "tcselectAll.html"
+					},
+					error: function(e) {
+						console.log(e);
+					}
+				});
+			})
+
+			$(".sure_no_b").click(function() {
+				$(".caLyear").hide();
+			})
+
+			//			添加学员?
+			$(".add").click(function() {
+				$(".addstudent").show();
+
+				$(".addsure_c_b").click(function() {
+					ajax();
+				})
+
+				//            判断名字是否中文?
+				$(".addname").keyup(function() {
+					var ent = event.which || event.keyCode;
+					if(ent == 13) {
+						var addnm = $(".addname").val().trim();
+						var cn = /^[\u4e00-\u9fa5]{2,4}$/
+
+						var cc = cn.test(addnm);
+						console.log(cc);
+
+						if(cc == false) {
+							$(".addname").addClass("bordercc");
+							return;
+						} else {
+							$(".addname").removeClass("bordercc");
+							$(".addpassword").focus();
+						}
+					}
+				})
+
+				//				密码数字字母结合?
+				$(".addpassword").keyup(function() {
+					var ent = event.which || event.keyCode;
+					if(ent == 13) {
+						var addpw = $(".addpassword").val().trim();
+						var cn = /^[A-z][0-9]{6,16}$/
+						var cc = cn.test(addpw);
+						if(cc = true) {
+							$(".addpassword").removeClass("bordercc");
+							$(".addphonenum").focus();
+						} else {
+							$(".addpassword").addClass("bordercc");
+						}
+					}
+
+				})
+
+				//电话号码
+				$(".addphonenum").keyup(function() {
+					var ent = event.which || event.keyCode;
+					if(ent == 13) {
+						var addph = $(".addphonenum").val().trim();
+						var cn = /^[0-9]{11}$/
+						var cc = cn.test(addph);
+						console.log(cc);
+						if(cc == true) {
+							$(".addphonenum").removeClass("bordercc");
+							$(".addchina").focus();
+						} else {
+							$(".addphonenum").addClass("bordercc");
+						}
+					}
+
+				})
+
+				//数学语文外语
+				$(".addchina, .addmath, .addengl").keyup(function() {
+					var ent = event.which || event.keyCode;
+					console.log(ent);
+					if(ent == 13) {
+						var v = $(this).val();
+						if(Number(v) <= 100 && Number(v) >= 0) {
+							$(this).removeClass("bordercc");
+							$(this).parent().next().find("input").focus();
+						} else {
+							$(this).addClass("bordercc");
+						}
+
+					}
+				})
+				/*						var addca = $(".addchina").val();
+								        var addmt = $(".addmath").val();
+								        var addeg = $(".addengl").val();
+				                        if(Number(addca)<=100 && Number(addca)>=0){
+				                        	$(".addchina).removeClass("bordercc");
+											$(".addmath").focus();
+				                        }else{
+											$(".addchina").addClass("bordercc");
+				                        }
+				                        if(Number(addmt)<=100 && Number(addmt)>=0){
+				                        	$(".addmath).removeClass("bordercc");
+											$(".addengl").focus();
+				                        }else{
+											$(".addmath").addClass("bordercc");
+				                        }
+				                        if(Number(addeg)<=100 && Number(addmt)>=0){
+				                        	$(".addengl).removeClass("bordercc");
+											$(".addand").focus();
+				                        }else{
+											$(".addengl").addClass("bordercc");
+				                        }*/
+
+				//执行ajax
+				$(".addand").keyup(function() {
+					var ent = event.which || event.keyCode;
+					if(ent == 13) {
+						var addand = $(".addand").val();
+						ajax();
+
+					}
+				})
+
+				function ajax() {
+					$.ajax({
+						type: "get",
+						url: "http://localhost:8080/demo.find.lxl/add",
+						async: true,
+						data: {
+							username: $(".addname").val(),
+							password: $(".addpassword").val(),
+							china: $(".addchina").val(),
+							math: $(".addmath").val(),
+							engl: $(".addengl").val(),
+							and: $(".addand").val(),
+							phonenum: $(".addphonenum").val()
+
+						},
+						success: function(res) {
+							alert(res);
+							window.location.href = "tcselectAll.html"
+						},
+						error: function(e) {
+							console.log(e);
+						}
+					});
+				}
+
+				$(".addsure_no_b").click(function() {
+					$(".addstudent").hide();
+				})
+
+			})
+		})
+	</script>
+
+</html>

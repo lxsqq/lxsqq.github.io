@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			
+			.k {
+				height: 1px;
+			}
+			
+			.log {
+				width: 500px;
+				height: 460px;
+				margin: 10px auto 10px;
+				background: whitesmoke;
+				padding: 40px 0 0 0;
+			}
+			
+			.log_bag {
+				width: 520px;
+				height: auto;
+				margin: 50px auto;
+				background: rgba(0, 0, 0, 0.5);
+				/*padding: 40px 0 0 0;*/
+			}
+			
+			.list>li:nth-of-type(1)>input {
+				display: block;
+				width: 300px;
+				height: 40px;
+				background: white;
+				margin: 30px auto 0;
+			}
+			
+			.list>li:nth-of-type(1)>input:nth-of-type(2) {
+				margin: 10px auto 0;
+			}
+			
+			.list>li:nth-of-type(1)>input:nth-of-type(3) {
+				margin: 10px auto 0;
+			}
+			
+			.code {
+				display: inline;
+				width: 100%;
+				cursor: help;
+			}
+			
+			.yy {
+				width: 300px;
+				margin: 0px auto;
+				position: relative;
+			}
+			
+			.use_msg {
+				width: 300px;
+				height: 12px;
+				margin: 0px auto;
+				position: relative;
+			}
+			
+			.pw_msg {
+				width: 300px;
+				height: 12px;
+				margin: 0px auto;
+				position: relative;
+			}
+			
+			.btn {
+				display: block;
+				width: 200px;
+				height: 40px;
+				background: greenyellow;
+				border: none;
+				font-size: large;
+				line-height: 40px;
+				text-align: center;
+				margin: 40px auto 0;
+			}
+			
+			.title {
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				font-size: medium;
+			}
+			
+			.caLyear {
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.3);
+				position: fixed;
+				top: 0;
+				right: 0;
+				z-index: 2;
+				display: none;
+			}
+			
+			.sure_c {
+				width: 400px;
+				height: 400px;
+				margin: 50px auto;
+				background: #F5F5F5;
+				padding: 20px 0 0 0;
+				text-align: center;
+			}
+			
+			.sure_c_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #ADFF2F;
+				outline: none;
+			}
+			
+			.sure_no_b {
+				width: 300px;
+				height: 40px;
+				margin: 30px 0 0;
+				background: #F5F5F5;
+				outline: none;
+			}
+			
+			.sure_c>p {
+				height: 20px;
+				margin: 10px 0 0;
+			}
+			
+			.sure_c>p>input {
+				height: 20px;
+				width: 60%;
+				outline: none;
+			}
+			
+			.top_list {
+				width: 100%;
+				height: 10%;
+				list-style: none;
+			}
+			
+			.top_list>li {
+				width: 50%;
+				height: 100%;
+				float: left;
+				font-size: 18px;
+				text-align: center;
+				line-height: 2.5;
+				border-right: ;
+				background: transparent;
+			}
+			
+			.active {
+				background: #fff !important;
+				color: orange !important;
+				font-weight: bolder !important;
+			}
+			
+			.list {
+				width: 100%;
+				height: 80%;
+				list-style: none;
+				background: #FFFFFF;
+				overflow: hidden;
+			}
+			
+			.list>li {
+				width: 100%;
+				height: 100%;
+				padding: 30px 0 0 0;
+				float: left;
+			}
+			
+			.bordercl {
+				border-color: red !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="k"></div>
+
+		<div class="caLyear">
+			<div class="sure_c">
+				<p>姓名:<input disabled="disabled" class="cname" /></p>
+				<p>密码:<input disabled="disabled" class="cpassword" /></p>
+				<p>语文:<input disabled="disabled" class="cchina" /></p>
+				<p>数学:<input disabled="disabled" class="cmath" /></p>
+				<p>英语:<input disabled="disabled" class="cengl" /></p>
+				<p>备注:<input disabled="disabled" class="cand" /></p>
+				<a style="display: block;text-decoration: none;" href="index1.html"> 首页</a>
+			</div>
+		</div>
+		<div class="log_bag">
+			<div class="k"></div>
+
+			<div class="log">
+				<p class="title"> <b>学生登录</b></p>
+				<ul class="top_list">
+					<li class="active">账号登录</li>
+					<li>手机号登录</li>
+				</ul>
+				<ul class="list">
+					<li>
+						<input type="text" placeholder="验证码" class="logcode" />
+						<div class="yy">验证码:
+							<p class="code" title="点击刷新"></p>
+							<span class="code_msg" style="color: red;"></span>
+							<input style="width: 30%;position: absolute;right: 0;" class="changecode" type="button" value="换一组?" />
+
+						</div>
+						<input type="text" placeholder="用户名" class="username" />
+						<p class="use_msg" style="color: red;font-size: 12px;"></p>
+						<input type="password" placeholder="密码" class="password" />
+						<p class="pw_msg" style="color: red;font-size: 12px;"></p>
+						<button type="button " class="btn"><b>登录</b></button>
+					</li>
+					<li>
+						<input type="text" placeholder="手机号" class="phonecode" />
+						<button type="button" class="sent_code">发送</button>
+						<input type="text" placeholder="验证码" class="cheak" />
+						<button type="button" class="ck_code">验证</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			//			验证码判断
+			$(".logcode").focus();
+			var cco = $(".logcode").val().trim();
+			$(".logcode").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var Sdcod = $(".code").text();
+					var Getcod = $(".logcode").val();
+					if(Sdcod == Getcod) {
+						$(".username").focus();
+						$(".logcode").removeClass("bordercl")
+					} else {
+						$(".code_msg").text("验证码错误");
+						setTimeout(function() {
+							$(".code_msg").empty();
+							$(".logcode").removeClass("bordercl")
+						}, 3000)
+						$(".logcode").addClass("bordercl")
+
+						return;
+					}
+				}
+			})
+			//   姓名判断?
+			$(".username").keyup(function() {
+				var nm = $(".username").val().trim();
+				var nml = nm.length;
+				var nohad = "0.123456789qwertyuiopasdfghjklzxcvbnm";
+				var su = true;
+				for(var i = 0; i < 4; i++) {
+					if(nohad.indexOf(nm.charAt(i))) {
+						su = false;
+
+					}
+					if(nml > 2 && nml <= 4 && su) {
+						$(".password").focus();
+						$(this).removeClass("bordercl");
+					} else {
+						$(this).addClass("bordercl")
+						$(".use_msg").text("用户名不合规范");
+					}
+					setTimeout(function() {
+						$(".use_msg").empty();
+						$(".use_msg").removeClass("bordercl");
+					}, 3000)
+				}
+
+			})
+
+			//    声明函数判断强弱
+			function ishad(str, ps) {
+				for(var i = 0; i < ps.length; i++) {
+					if(str.indexOf(ps[i]) > -1) {
+						return true;
+					}
+				}
+				return false;
+			}
+
+			$(".username").val().trim();
+			$(".password").val().trim();
+
+			//        选项卡切换
+			$(".top_list>li").mouseover(function() {
+				$(".logcode").focus();
+
+				var idx = $(this).index();
+				$(this).addClass("active").siblings().removeClass("active");
+				$(".list>li").eq(idx).show().siblings().hide();
+			})
+			getCode();
+			//       换验证码
+			$(".changecode").click(function() {
+				getCode();
+
+			})
+			//       随机验证码函数
+			function getCode() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/demo.find.lxl/codea",
+					async: true,
+					//				data:{
+					//					logcode:$(".logcode").val()
+					//				},
+					success: function(res) {
+						var resobj = JSON.parse(res);
+						//					console.log(res);
+
+						if(resobj.status) {
+							$(".code").text(resobj.code);
+						}
+
+					},
+					error: function(e) {
+						console.log(e);
+					}
+				});
+			}
+
+//   密码加登录
+			$(".password").keyup(function() {
+				var ent =event.which||event.keyCode;
+				if(ent==13){
+				var pswd = $(".password").val();
+				
+				loggg();
+				
+				var isSure = true;
+
+				//function cheack() {
+					//var pswd = $(".password").val();
+					var allsure = "qwertyuiopasdfghjklzxcvbnm.0123456789";
+					for(var i = 0; i < pswd.length; i++) {
+						if(allsure.charAt(pswd[i]) > -1) {
+							isSure = false;
+						}
+					}
+				//}
+
+				if(pswd.length < 6 || pswd.length > 10 || !isSure) {
+					$(".pw_msg").text("1	输错啦,重新弄");
+					setTimeout(function() {
+						$(".pw_msg").empty();
+					}, 13000)
+					return;
+				}
+
+				var num = Number(ishad("1234567890", pswd)) + Number(ishad(".", pswd)) + Number(ishad("qwertyuioasdfghjklzxcvbnm", pswd));
+				console.log(Number(ishad("1234567890", pswd)));
+				console.log(Number(ishad(".", pswd)));
+				console.log(Number(ishad("qwertyuiosdfghjklzxcvbnm", pswd)));
+				console.log(num);
+				switch(num) {
+					case 0:
+						$(".pw_msg").text("输错啦,重新弄");
+						break;
+					case 1:
+						$(".pw_msg").text("你这密码挺弱啊,你得注意");
+						break;
+					case 2:
+						$(".pw_msg").text("你这密码一般,你再想想吧");
+						break;
+					case 3:
+						$(".pw_msg").text("你这密码真的强");
+						break;
+					default:
+						break;
+
+				}
+				}
+			
+				
+
+				//				登录函数
+				function loggg() {
+					$.ajax({
+						type: "get",
+						url: "http://localhost:8080/demo.find.lxl/tclogin",
+						async: true,
+						data: {
+							username: $(".username").val(),
+							password: $(".password").val(),
+							logcode: $(".logcode").val(),
+							logcode1: $(".code").text()
+						},
+						success: function(res) {
+							console.log(res);
+							var resObj = JSON.parse(res);
+							var Sdcod = $(".code").text();
+							var Getcod = $(".logcode").val();
+
+							if(Sdcod == Getcod) {
+
+								if(resObj.status == 0) {
+									$(".caLyear ").show();
+									$(".cname").val(resObj.result.username);
+									$(".cpassword").val(resObj.result.password);
+									$(".cchina").val(resObj.result.china);
+									$(".cmath").val(resObj.result.math);
+									$(".cengl").val(resObj.result.engl);
+									$(".cand").val(resObj.result.and);
+								}
+							} else {
+								$(".code_msg").text(resObj.codemsg);
+								setTimeout(function() {
+									$(".code_msg").empty();
+								}, 3000)
+								return;
+							}
+							alert(resObj.msg);
+
+						},
+						error: function(e) {
+							console.log(e);
+						}
+					});
+				}
+			})
+
+//     点击登录
+           $(".btn").click(function(){
+           	
+           	
+           		$.ajax({
+						type: "get",
+						url: "http://localhost:8080/demo.find.lxl/tclogin",
+						async: true,
+						data: {
+							username: $(".username").val(),
+							password: $(".password").val(),
+							logcode: $(".logcode").val(),
+							logcode1: $(".code").text()
+						},
+						success: function(res) {
+							console.log(res);
+							var resObj = JSON.parse(res);
+							var Sdcod = $(".code").text();
+							var Getcod = $(".logcode").val();
+
+							if(Sdcod == Getcod) {
+
+								if(resObj.status == 0) {
+									$(".caLyear ").show();
+									$(".cname").val(resObj.result.username);
+									$(".cpassword").val(resObj.result.password);
+									$(".cchina").val(resObj.result.china);
+									$(".cmath").val(resObj.result.math);
+									$(".cengl").val(resObj.result.engl);
+									$(".cand").val(resObj.result.and);
+								}
+							} else {
+								$(".code_msg").text(resObj.codemsg);
+								setTimeout(function() {
+									$(".code_msg").empty();
+								}, 3000)
+								return;
+							}
+							alert(resObj.msg);
+
+						},
+						error: function(e) {
+							console.log(e);
+						}
+					});
+           })
+
+			//			发送验证码?
+			$(".sent_code").click(function() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/demo.find.lxl/scode",
+					async: true,
+					data: {
+						phonenum: $(".phonecode").val()
+					},
+					success: function(res) {
+						console.log(res)
+					}
+				});
+			})
+			//			验证验证码?
+			$(".ck_code").click(function() {
+				$.ajax({
+					type: "get",
+					url: "",
+					async: true,
+					data: {
+						phonenum: $(".phonecode").val(),
+						code: $(".code").val()
+					}
+				});
+			})
+		})
+	</script>
+
+</html>
