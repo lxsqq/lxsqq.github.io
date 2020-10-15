@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>lxsqq.github.io</name>
-	<comment></comment>
+	<name>line_apply_lxl_1001</name>
+	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -16,7 +16,25 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1599713633032</id>
+			<id>1601635339589</id>
+			<name></name>
+			<type>10</type>
+			<matcher>
+				<id>org.eclipse.ui.ide.orFilterMatcher</id>
+				<arguments>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-bin</arguments>
+					</matcher>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-projectRelativePath-matches-false-false-setting</arguments>
+					</matcher>
+				</arguments>
+			</matcher>
+		</filter>
+		<filter>
+			<id>1602207633260</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -25,25 +43,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1600600319996</id>
-			<name></name>
-			<type>26</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-node_modules</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1601603210059</id>
-			<name></name>
-			<type>26</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-node_modules</arguments>
-			</matcher>
-		</filter>
-		<filter>
-			<id>1602740014214</id>
+			<id>1602207633297</id>
 			<name></name>
 			<type>26</type>
 			<matcher>

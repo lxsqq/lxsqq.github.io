@@ -1,88 +1,130 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title>目录</title>
 		<style type="text/css">
-			*{
+			* {
 				margin: 0;
 				padding: 0;
-				font-family: "微软雅黑",arial;
+				font-family: "微软雅黑", arial;
 			}
-			.list{
-				width: 100%;
-				height: 100%;
-				background: oldlace;
-				list-style: none;
-			}
-			.list>li{
-				width: 30%;
+			
+			.list {
+				width: 290px;
 				height: 300px;
-				float: left;
-				margin: 100px 100px;
-				background:url(img/af.jpeg);
-				background-size: 100% 100%;
-				transition: 0.5s;
-				transform: scale(0.7);
-				animation: sc 1.5s .1s 6 linear both alternate;
+				background: rgba(0, 0, 0, 0.4);
+				list-style: none;
+				border-radius: 10px;
+				border: 1px solid #fff;
+				padding: 0 0 15px 15px;
+				/*margin: 100px auto 0;*/
+				position: relative;
+				top: 160px;
+				transition: .3s;
+				/*display: flex;
+				justify-content: space-around;*/
+				z-index: 2;
+				overflow: hidden;
 			}
-			@keyframes sc{
-				from{transform: scale(1);}
-				to{transform: scale(0.7);}
-			}
-			.list a{
-				display: block;
-				width: auto;
-				height: 100%;
-				
-				text-decoration: none;
-				font-size: 20px;
-				line-height: 28px;
-				text-align: center;
-				border: 1px solid darkslategrey;
-				color: #000000;
-				
-				
-			}
-			.list>li:hover{
-				transform: scale(1) !important;
-				color: orangered;
-			}
-			.title{display: block;
+			
+			.max {
 				width: 100%;
-				height: 30px;
-				color: red;
-				border: 1px solid #FFF;
-				margin: 0 auto;
-				font-size: 20px;
-				line-height: 30px;
+				height: 100%;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+			}
+			
+			.cc {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				background: rgba(0, 0, 0, 0.1);
+				top: 0;
+				left: 0;
+			}
+			
+			.list>a {
+				display: block;
+				text-decoration: none;
+				float: left;
+				padding: 5px 10px;
+				width: 60px;
+				height: 80px;
+				background: rgba(255, 255, 255, 0.9);
+				border-radius: 3px;
 				text-align: center;
+				font-size: 12px;
+				margin: 10px 5px 5px 5px;
 				color: #000000;
-				font-weight: bold;
+				overflow: hidden;
+			}
+			
+			.list>a>img {
+				width: 60px;
+				height: 60px;
+				vertical-align: top;
+			}
+			
+			.title {
+				widows: 100%;
+				text-align: center;
+				position: absolute;
+				top: 0;
 			}
 		</style>
 	</head>
+
 	<body>
-		<p class="title">小李的日常操作</p>
-		<ul class="list">
-			<li><a href="biage.html"><b>成绩表单</b></a></li>
-			<li><a href="复制 new_file.html"><b>低配双色球</b></a></li>
-			<li><a href="arstro.html"><b>星座运势</b></a></li>
-			<li><a href="aisheji_ls_lxs_0813/aisj1.html">爱设计</a></li>
-			<li><a href="wo我为购物狂_lxs/one.html">XLshopping</a></li>
-			<li><a href="students_adm/explain.html">学生管理系统【css】</a></li>
-			
-			<li><a href="lianxi.html">看完点我</a></li>
-			
-		</ul>
+		<div class="max">
+			<p class="title">小李的日常操作</p>
+			<ul class="list">
+				<div class="cc"></div>
+				<a href="biage.html"><img src="img/logooo.jpg" align="正在加载" /><b>成绩</b></a>
+				<a href="复制 new_file.html"><img src="img/logoooo1.jpg" align="正在加载" /><b>低配球</b></a>
+				<a href="arstro.html"><img src="img/log22.jpg" align="正在加载" /><b>星座运势</b></a>
+				<a href="aisheji_ls_lxs_0813/aisj1.html"><img src="img/logoooo1.jpg" align="正在加载" />爱设计</a>
+				<a href="wo我为购物狂_lxs/one.html"><img src="img/logo2.jpg" align="正在加载" />XLsp</a>
+				<a href="students_adm/explain.html"><img src="img/logooo.jpg" align="正在加载" />学生管理系统</a>
+				<a href="line_apply_lxl_1001/index.html"><img src="img/logo33.jpg" align="正在加载" />网上报名系统</a>
+
+				<a href="lianxi.html"><img src="img/logo221.jpg" align="正在加载" />看完点我</a>
+			</ul>
+		</div>
 	</body>
 	<script type="text/javascript">
 		window.alert("this is good day");
-		var $a=document.getElementsByClassName("title")[0];
-		$a.addEventListener("click",fun,true);
-		function fun(){
+		var $a = document.getElementsByClassName("title")[0];
+		$a.addEventListener("click", fun, true);
+
+		function fun() {
 			alert("这个点不了哦");
 		}
-		
+
+		var $listcg;
+		var $body = document.getElementsByTagName("body");
+		var v = document.getElementsByClassName("cc")[0];
+		var $list = document.getElementsByClassName("list")[0];
+		v.onclick = function() {
+			//阻止冒泡
+			event.stopPropagation();
+			v.style.display = "none";
+			$listcg = $list.style.transform = "scale(2)";
+			//			$body.style.background="rgba(0,0,0,0.4)";
+			$list.style.opcity = "1";
+		}
+		var $max = document.getElementsByClassName("max")[0];
+		//if($listcg == "scale(2)") {
+
+			$max.onclick = function() {
+				$list.style.transform = "scale(1)";
+			    v.style.display = "block";
+				
+
+			}
+		//}
 	</script>
+
 </html>

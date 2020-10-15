@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.index>a:nth-of-type(1):hover {
+				transform: scale(1.2);
+				background: #fff !important;
+				color: orange !important;
+				font-family: "仿宋";
+			}
+			
+			.index>a:nth-of-type(2):hover {
+				transform: scale(1.2);
+				background: #fff !important;
+				color: orange !important;
+				font-family: "仿宋";
+			}
+			
+			.top {
+				width: 100%;
+				height: 80px;
+				background: #fff;
+				box-shadow: 0px 5px 5px #ccc;
+				font-size: 20px;
+				line-height: 4;
+				text-align: center;
+			}
+			
+			body {
+				background: ghostwhite;
+			}
+			.bottom{
+				width: 100%;
+				height: auto;
+				position: absolute;
+				bottom: 0;
+				background: #fff;
+				font-size: 12px;
+				text-align: center;
+				letter-spacing: 2px;
+				min-width: 1200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="top"><i>    欢迎来到报名网站!</i></div>
+
+		<div class="index" style="width: 800px;height: auto;margin: 10px auto;background-image: url(img/aaaa.jpg);
+			background-size:100% 100%;padding: 50px 0 ;transition: .5s;">
+			<h2 style="font-family: '楷体';widows: 100%;height:40px;text-align: center;color: #fff;"><i>学员管理系统</i></h2>
+			<a style="display: block; width: 200px;height: 40px;
+				margin: 40px auto 0;border-radius: 10px;
+				border: 1px solid gray;text-align: center;line-height: 40px;opacity: 0.8;background: rgba(255,255,255,0.6);
+				font-size: 18px;text-decoration: none;color: #000;transition: .5s;
+				" href="techer.html"> 教师端登录</a>
+			<a style="display: block; width: 200px;height: 40px;
+				margin: 40px auto 60px;border-radius: 10px;
+				border: 1px solid gray;text-align: center;line-height: 40px;opacity: 0.8;background: rgba(255,255,255,0.6);
+				font-size: 18px;text-decoration: none;color:#000;transition: .5s;
+				" href="stdlog.html"> 学生登录</a>
+
+			<p style="width: 100%;text-align: center;">
+				<a href="line_enroll.html" style="color: #000;"><b>没账号？学生注册</b></a>
+			</p>
+		</div>
+
+		<div class="bottom">
+			<b>本项目为学习参考小项目</b><br /> mysqL中为数据库测试内容
+			<br /> java中是后台数据接口都已连接好<br />
+			图片来源网络*学习使用
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var bac = document.getElementsByClassName("index")[0];
+		var a1 = document.getElementsByTagName("a")[0];
+		var a2 = document.getElementsByTagName("a")[1];
+
+		a1.onmouseover = b;
+		a1.onmouseleave = c;
+		a2.onmouseover = b1;
+		a2.onmouseleave = c;
+
+		function b() {
+			document.getElementsByClassName("index")[0].style.backgroundImage = "url(img/tc.jpg)";
+			document.getElementsByClassName("index")[0].style.transform = "translateY(-10px)";
+			document.getElementsByClassName("index")[0].style.backgroundSize = "120% 120%";
+			document.getElementsByClassName("index")[0].style.backgroundPosition = "center";
+		}
+
+		function b1() {
+			document.getElementsByClassName("index")[0].style.backgroundImage = "url(img/stu.jpg)";
+			document.getElementsByClassName("index")[0].style.transform = "translateY(-10px)";
+			document.getElementsByClassName("index")[0].style.backgroundSize = "120% 120%";
+			document.getElementsByClassName("index")[0].style.backgroundPosition = "center";
+
+		}
+
+		function c() {
+			document.getElementsByClassName("index")[0].style.backgroundImage = "url(img/aaaa.jpg)"
+			document.getElementsByClassName("index")[0].style.transform = "";
+			document.getElementsByClassName("index")[0].style.backgroundSize = "100% 100% ";
+		}
+	</script>
+
+</html>

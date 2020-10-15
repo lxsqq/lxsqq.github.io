@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			table{
+				width: 600px;
+				height:auto;
+				margin: 40px auto
+			}
+			.max{
+				position:fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.4);
+				display: none;
+			}
+			
+			.row{
+				width: 80%;
+				height: 30px;
+				margin: 80px auto;
+				display: flex;
+				justify-content: center;
+				/*flex-direction: column;*/
+			}
+			.sure{
+				display: block;
+				width: 300px;
+				height: 40px;
+				background: lawngreen;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 20px;
+				color: #FFFFFF;
+				line-height: 2;
+				outline: none;
+				border: none;
+			}
+			.no{
+				display: block;
+				width: 300px;
+				height: 40px;
+				background:whitesmoke;
+				margin: 40px auto;
+				text-align: center;
+				font-size: 20px;
+				color: black;
+				line-height: 2;
+				outline: none;
+				border: none;
+			}
+			.change{
+				/*position: absolute;
+				right: 2px;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="max">
+			<div class="row">
+				<input type="txet" disabled="disabled" class="idx" />
+				<input type="txet" disabled="disabled" class="nm" />
+				<input type="txet"  class="pw" />
+				<input type="txet" disabled="disabled" class="id" />
+				<input type="txet" disabled="disabled" class="unm" />
+				<input type="txet" disabled="disabled" class="ph" />
+				<input type="txet" disabled="disabled" class="sc" />
+			</div>
+			<button class="no" type="button">取消</button>
+			<button class="sure" type="button">确定</button>
+		</div>
+		
+		
+		<table border="1" cellspacing="1" cellpadding="1">
+			<caption style="width: 100%; text-align: center;">报名学员信息</caption>
+			<thead>
+				<th><tr>
+				<td>序号</td>
+				<td>姓名</td>
+				<td>密码</td>
+				<td>身份证</td>
+				<td>用户名</td>
+				<td>手机号</td>
+				<td>成绩</td>
+				<td>-</td>
+			</tr></th>
+			</thead>
+			<tbody>
+				
+			</tbody>
+		</table>
+		<a href="index.html">返回</a>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				type:"get",
+				url:"http://localhost:8080/apply.lxl.ls.1001/selectall",
+				async:true,
+				success:function(res){
+					//console.log(res);
+					var obj=JSON.parse(res);
+					var data=obj.res;
+					//console.log(data);
+					for (var i=0;i< data.length;i++) {
+						var $tr=$("<tr></tr>");
+						var $tdI=$("<td></td>");
+						var $tdNm=$("<td></td>");
+						var $tdId=$("<td></td>");
+						var $tdPw=$("<td></td>");
+						var $tdUn=$("<td></td>");
+						var $tdSc=$("<td></td>");
+						var $tdPh=$("<td></td>");
+						$tdI.text(data[i].idstds);
+						$tdNm.text(data[i].name);
+						$tdId.text(data[i].id);
+						$tdPw.text(data[i].password);
+						$tdUn.text(data[i].username);
+						$tdSc.text(data[i].score);
+						$tdPh.text(data[i].phonenum);
+						$pwbuutton=$("<button type='button'class='change'>修改密码</button>")
+						
+						$pwbuutton.click(function(){
+							$(".max").show();
+							$(".pw").focus();
+							 var idx1=  $(this).parent().find("td").eq(0).text();
+							 var nm1=  $(this).parent().find("td").eq(1).text();
+							 var pw1=  $(this).parent().find("td").eq(2).text();
+							 var id1=  $(this).parent().find("td").eq(3).text();
+							 var unm1=  $(this).parent().find("td").eq(4).text();
+							 var ph1=  $(this).parent().find("td").eq(5).text();
+							 var sc1=  $(this).parent().find("td").eq(6).text();
+							 
+							 $(".idx").val(idx1);
+							 $(".nm").val(nm1);
+							 $(".pw").val(pw1);
+							 $(".id").val(id1);
+							 $(".unm").val(unm1);
+							 $(".ph").val(ph1);
+							 $(".sc").val(sc1);
+							 console.log(pw1);
+						})
+						
+						//console.log(data[i].id);
+						
+						$tr.append($tdI,$tdNm,$tdPw,$tdId,$tdUn,$tdPh,$tdSc,$pwbuutton);
+						$("table").append($tr);
+					}
+					$(".no").click(function(){
+						$(".max").hide();
+					})
+					$(".sure").click(function(){
+						
+						var pw=/^[\w]{6,16}$/
+						var pp=$(".pw").val().trim();
+						var pww=pw.test(pp);
+						if(pww==true){
+							
+							$.ajax({
+								type:"get",
+								url:"http://localhost:8080/apply.lxl.ls.1001/tcchangestd",
+								async:true,
+								data:{
+									id:$(".id").val().trim(),
+									password:$(".pw").val().trim()
+								},success:function(res){
+									console.log(res);
+									var obj=JSON.parse(res);
+									console.log(obj);
+									alert(obj.msg);
+									window.location.href="tcselectall.html"
+								},error:function(e){
+									console.log(e)
+								}
+							});
+						}else{
+							alert("格式不对");
+							return;
+						}
+					})
+				}
+			});
+		})
+	</script>
+</html>

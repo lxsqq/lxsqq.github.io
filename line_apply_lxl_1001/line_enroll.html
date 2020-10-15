@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			
+			.k {
+				height: 1px;
+			}
+			
+			.max {
+				width: 700px;
+				height: 640px;
+				background: whitesmoke;
+				margin: 80px auto 0;
+				padding: 60px 0 0 0;
+				text-align: center;
+			}
+			
+			.max>input {
+				height: 40px;
+				width: 400px;
+				margin: 30px auto 0;
+			}
+			
+			.max>input:nth-of-type(4) {
+				margin: 0 auto;
+			}
+			
+			.max>div {
+				height: 40px;
+				width: 400px;
+				margin: 30px auto 0;
+			}
+			
+			.code {
+				width: 69%;
+				height: 100%;
+			}
+			
+			.sentcod {
+				width: 28%;
+				height: 100%;
+			}
+			
+			.enroll {
+				width: 50%;
+				height: 7%;
+				background: orange;
+				font-size: 14px;
+				line-height: 3;
+				text-align: center;
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				margin: 40px 0 0 0;
+			}
+			
+			.pw_msg {
+				height: 30px;
+				width: 400px;
+				margin: 0 auto;
+				color: #555;
+			}
+			
+			.boooo {
+				border-color: red !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="k"></div>
+		<div class="max">
+			<h5 style="width: 100%;height: 20px;text-align: center;">网上报名注册</h5>
+			<input type="tel" placeholder="手机号" class="phonenum" maxlength="11" />
+			<div style="display: inline-block;">
+				<input type="text" placeholder="验证码" class="code" maxlength="4" />
+				<button type="button" class="sentcod">获取验证码</button>
+			</div>
+			<input type="text" placeholder="用户名（汉字和英语）" class="username" maxlength="8" />
+			<input type="password" placeholder="只限数字字母.（6~16）" class="password" maxlength="16" />
+			<p class="pw_msg"></p>
+			<input type="password" placeholder="确认密码" class="surepassword" />
+			<input type="text" placeholder="姓名（2~4）" class="name" maxlength="4" />
+			<input type="text" placeholder="身份证号" class="id" maxlength="18" />
+			<button type="button" class="enroll"><b>注册</b></button>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+
+			//电话号码判断
+			$(".phonenum").focus();
+			$(".phonenum").keyup(function() {
+
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var p1 = $(".phonenum").val().trim();
+					var ph = /^(1[3-9])\d{9}$/
+					var pp = ph.test(p1);
+					if(pp == true) {
+						$(".phonenum").removeClass("boooo");
+						$(".code").focus();
+					} else {
+
+						$(".phonenum").addClass("boooo");
+						$(".phonenum").val("输入有误").select();
+						$(".phonenum").attr("placeholder", "格式有误！")
+						return;
+
+					}
+				}
+			})
+
+			//验证码
+			$(".code").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var c = $(this).val().trim();
+					var c1 = /^[0-9]{4}$/
+					var cc = c1.test(c);
+					if(cc == true) {
+						$(".username").focus();
+						$(this).removeClass("boooo");
+					} else {
+						$(this).addClass("boooo");
+						$(this).val("4位数字验证码").select();
+						return;
+					}
+				}
+			})
+
+			//用户名
+			$(".username").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var nm = $(this).val().trim();
+					var nmy = /^[\u4e00-\u9fa5 A-z]{2,8}$/
+					var nmm = nmy.test(nm);
+					console.log(nmm);
+					if(nmm == true) {
+						$(this).removeClass("boooo");
+						$(".password").focus();
+					} else {
+						$(this).addClass("boooo")
+						$(this).val("2~8位中文，汉字").select();
+						return;
+					}
+				}
+			})
+
+			function ishad(str, ps) {
+				for(var i = 0; i < ps.length; i++) {
+					if(str.indexOf(ps[i]) > -1) {
+						return true;
+					}
+				}
+				return false;
+			}
+
+			$(".password").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var pw = $(".password").val().trim();
+					if(pw.length < 6 || pw.length > 18) {
+						$(".pw_msg").text("密码有误数字字母.6-18");
+						return;
+					}
+
+					var num = Number(ishad("1234567890", pw)) + Number(ishad(".", pw)) + Number(ishad("qwertyuiopasdfghjklzxcvbnm", pw));
+					console.log(Number(ishad("1234567890", pw)));
+					console.log(Number(ishad(".", pw)));
+					console.log(Number(ishad("qwertyuiopasdfghjklzxcvbnm", pw)));
+					console.log(num);
+					switch(num) {
+						case 0:
+							$(".pw_msg").text("密码有误数字字母.6-18");
+							break;
+						case 1:
+							$(".pw_msg").text("密码强度较弱，建议换一下");
+							break;
+						case 2:
+							$(".pw_msg").text("密码强度中等")
+							break;
+						case 3:
+							$(".pw_msg").text("密码强度较强");
+							break;
+						default:
+							break;
+					}
+					$(".surepassword").focus();
+
+				}
+			})
+			//垃圾密码强度
+			/*$(".password").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var pw = $(this).val().trim();
+
+					var p2 = /^[A-Z]{6,16}$/
+					var p3 = /^[a-z]{6,16}$/
+					var p4 = /^[0-9]{6,16}$/
+					var pp1 = p2.test(pw);
+					var pp3 = p3.test(pw);
+					var pp4 = p4.test(pw);
+					if(pp1 == true || pp3 == true || pp4 == true) {
+						$(".pw_msg").text("密码强度弱");
+						$(".surepassword").focus();
+
+					} else {
+						var p1 = /^[\w-_]{6,16}$/
+						var pp = p1.test(pw);
+						console.log(pp);
+						if(pp == true) {
+							$(".pw_msg").text("密码强度强");
+							$(".surepassword").focus();
+
+						} else {
+							$(".pw_msg").text("密码不符合规格");
+							return;
+						}
+					}
+				}
+			})*/
+
+			//确认密码
+			$(".surepassword").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var sp = $(this).val().trim();
+					var pp = $(".password").val().trim();
+					if(sp == pp) {
+						$(".name").focus();
+						$(this).removeClass("boooo");
+					} else {
+						$(this).addClass("boooo");
+						return;
+					}
+				}
+			})
+
+			//姓名
+			$(".name").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var nm = $(this).val().trim();
+					var nn = /^[\u4e00-\u9fa5]{2,4}$/
+					var n1 = nn.test(nm);
+					if(n1 == true) {
+						$(".id").focus();
+						$(this).removeClass("boooo");
+					} else {
+						$(this).val("2-4位汉字模式").attr("placeholder", "格式有误").select();
+						$(this).addClass("boooo");
+					}
+				}
+			})
+
+			$(".id").keyup(function() {
+				var ent = event.which || event.keyCode;
+				if(ent == 13) {
+					var i = $(this).val().trim();
+					var d = /^(\d{18})|([0-9x]{18})|([0-9X]{18})$/
+					var dd = d.test(i);
+					console.log(dd);
+					if(dd == true) {
+						
+						ai();
+					} else {
+						$(this).addClass("boooo");
+						return;
+					}
+				}
+			})
+
+			$(".sentcod").click(function() {
+
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/SentCode",
+					async: true,
+					data: {
+						phonenum: $(".phonenum").val()
+					},
+					success: function(res) {
+						var resObj = JSON.parse(res);
+						if(resObj.msg == "ok") {
+							alert("发送成功")
+							//console.log(res);
+						} else {
+							return;
+						}
+
+					},
+					error: function(e) {
+						console.log(e);
+					}
+				});
+			})
+			$(".enroll").click(function() {
+				var p1 = $(".phonenum").val();
+				var i = $(".id").val();
+				var nm = $(".name").val();
+				var sp = $(".surepassword").val();
+				var nmm = $("username").val();
+				var pw = $("password").val();
+				if(p1 == "" || i == "" || nm == "" || sp == "" || sp == "" || nmm == "" || pw == "") {
+					alert("内容不能为空")
+					return;
+				}
+              $.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/ver",
+					async: true,
+					data: {
+						phonenum:$(".phonenum").val().trim(),
+						code: $(".code").val().trim()
+					},
+					success: function(res) {
+						var Objres = JSON.parse(res);
+						if(Objres.status == 0) {
+							//alert(Objres.msg);
+							window.location.href = "mid.html";
+							ai();
+						} else {
+
+							alert(Objres.msg);
+							return;
+
+						}
+					}
+				});
+			
+
+				//ai();
+
+			})
+
+			//短信验证函数
+			/*function msg() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/ver",
+					async: true,
+					data: {
+						code: $(".code").val().trim()
+					},
+					success: function(res) {
+						var Objres = JSON.parse(res);
+						if(Objres.status == 0) {
+							alert(Objres.msg);
+							window.location.href = "mid.html";
+						} else {
+
+							alert(Objres.msg);
+							return;
+
+						}
+					}
+				});
+			}*/
+
+			//注册函数
+			function ai() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/enroll",
+					async: true,
+					data: {
+						username: $(".username").val().trim(),
+						password: $(".password").val().trim(),
+						name: $(".name").val().trim(),
+						id: $(".id").val().trim(),
+						phonenum: $(".phonenum").val().trim(),
+						//code: $(".code").val().trim()
+					},
+					success: function(res) {
+						console.log(res);
+						var resObj = JSON.parse(res);
+						if(resObj.status == 0) {
+							alert(resObj.msg);
+							//window.location.href="mid.html";
+						}
+					},
+					error: function(e) {
+						console.log(e);
+					}
+				});
+			}
+		})
+	</script>
+
+</html>

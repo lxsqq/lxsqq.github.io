@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		
+	}
+	#qqq{
+		width: 600px;
+		height: 540px;
+		background: whitesmoke;
+		padding: 60px 0 0 0;
+		margin: 40px auto;
+		text-align: center;
+	}
+	#qqq>p{
+		
+		width: 50%;
+		margin: 40px auto 0; 
+	}
+	#qqq>p>input{
+		width: 80%;
+		height: 30px;
+		outline: none;
+		float: right;
+	}
+	#btn{
+		display: block;
+		width: 30%;
+	    height: 30px;
+	    margin: 40px auto 0;
+	    background: orange;
+	    border: none;
+	    color: #fff;
+		
+	}
+</style>
+	<body>
+		<div id="qqq">
+		<p>题目:<input type="text" placeholder="题目" id="question" /></p>
+		<p>A:<input type="text" placeholder="a" id="a" /></p>
+		<p>B:<input type="text" placeholder="b" id="b" /></p>
+		<p>C:<input type="text" placeholder="c" id="c" /></p>
+		<p>D:<input type="text" placeholder="d" id="d" /></p>
+		<p>答案:<input type="text" placeholder="答案(A,B,C,D)" id="answ" /></p>
+		<button type="button" id="btn">提交</button>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#question").focus();
+			
+				$("#question").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					$("#a").focus();
+				}
+			})
+			
+			$("#a").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					$("#b").focus();
+				}
+			})
+			
+			$("#b").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					$("#c").focus();
+				}
+			})
+			$("#c").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					$("#d").focus();
+				}
+			})
+			$("#d").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					$("#answ").focus();
+				}
+			})
+			
+			
+			$("#answ").keyup(function() {
+				var ent = event.which || event.keyCode
+				if(ent == 13) {
+					for (var i=0;i<$("input").length;i++) {
+					if($("input").eq(i).val()==""){
+					alert("所有均为必填,不能为空")
+					return;	
+				}
+				}
+					aj();
+			}
+				})
+			$("#btn").click(function() {
+				for (var i=0;i<$("input").length;i++) {
+					if($("input").eq(i).val()==""){
+					alert("所有均为必填,不能为空")
+					return;	
+				}
+				}
+				aj();
+			})
+
+			function aj() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/addquetion",
+					async: true,
+					data: {
+						question: $("#question").val().trim(),
+						a: $("#a").val().trim(),
+						b: $("#b").val().trim(),
+						c: $("#c").val().trim(),
+						d: $("#d").val().trim(),
+						answ: $("#answ").val().trim()
+					},
+					success: function(res) {
+						var obj = JSON.parse(res);
+						if(obj.status == 0) {
+							$("#question").focus();
+							$("#question,#a,#b,#c,#d,#answ").val("");
+						}
+					},
+					error: function(e) {
+						console.log(e);
+					}
+				});
+			}
+		})
+	</script>
+
+</html>

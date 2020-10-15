@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			.log{
+				width: 600px;
+				height: 500px;
+				background: whitesmoke;
+				margin: 60px auto;
+				padding: 100px 0 0 0;
+				text-align: center;
+			}
+			.log>input{
+				width: 70%;
+				height: 40px;
+				margin: 20px auto 0;
+				
+			}
+			.log>p{
+				width:60%;
+				height:40px;
+				margin:30px auto 0;
+				background:greenyellow;
+				font-size:20px;
+				text-align:center;
+				color:white;
+				border: double;
+			}
+			.log>p>a{
+				text-decoration: none;
+				color:#fff;
+			}
+			.log>p>a:hover{
+				color: orange;
+			}
+			#btn_log{
+				width:60%;
+				height:40px;
+				margin:30px auto 0;
+				background:orange;
+				font-size:20px;
+				text-align:center;
+				color:white;
+				border: double;
+				cursor: pointer;
+			}
+			.boo{
+				border-color: red;
+			}
+			.id_msg{
+				width: 70%;
+				height: 20px;
+				margin: 0 auto;
+				font-size: 12px;
+				color: red;
+				text-indent: 18px;
+				text-align: left;
+			}
+			.pw_msg{
+				width: 70%;
+				height: 20px;
+				margin: 0 auto;
+				font-size: 12px;
+				color: red;
+				text-indent: 18px;
+				text-align: left;
+			}
+			.pw_msga{
+				width: 70%;
+				height: 20px;
+				margin: 0 auto;
+				font-size: 12px;
+				color: red;
+				text-indent: 18px;
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="log">
+			<h4 style="width: 100%;text-align: center;">学生修改密码</h4>
+			<input type="text" id="idcard" placeholder="身份证号18位" maxlength="18"  />
+			<div class="id_msg"></div>
+			<input type="password" id="oldpassword" placeholder="旧密码" maxlength="16"  />
+			<div class="pw_msga"></div>
+			<input type="password" id="newpassword" placeholder="新密码" maxlength="16"  />
+			<div class="pw_msg"></div>
+			<p><a href="stdlog.html">返回</a></p>
+		    <button type="button" id="btn_log">确认修改</button>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			
+			$("#idcard").keyup(function(){
+				var ent=event.which||event.keyCode;
+				if(ent==13){
+					var id=$(this).val().trim();
+					var ii=/^(\d{18})|([0-9x]{18})|([0-9X]{18})$/
+					var iu=ii.test(id);
+					if (iu==true) {
+						$("#oldpassword").focus();
+						$(this).removeClass("boo");
+						$(".id_msg").empty();
+						
+					}else{
+						$(".id_msg").text("正确输入18位身份证号");
+						$(this).select().addClass("boo");
+						return;
+					}
+				}
+			})
+			
+			$("#oldpassword").keyup(function(){
+				var ent=event.which||event.keyCode;
+				if (ent==13) {
+					var pw=$(this).val().trim();
+					var po=/^[\w-_]{6,16}$/
+					var pp=po.test(pw);
+					if(pp==true){
+						$(this).removeClass("boo");
+						$(".pw_msga").empty();
+						$("#newpassword").focus();
+					}else{
+						$(this).addClass("boo");
+						$(".pw_msga").text("密码格式错误");
+						return;
+					}
+				}
+			})
+			
+			$("#newpassword").keyup(function(){
+				var ent=event.which||event.keyCode;
+				if (ent==13) {
+					var pw=$(this).val().trim();
+					var po=/^[\w-_]{6,16}$/
+					var pp=po.test(pw);
+					if(pp==true){
+						$(this).removeClass("boo");
+						$(".pw_msg").empty();
+						
+					}else{
+						$(this).addClass("boo");
+						$(".pw_msg").text("密码格式错误");
+						return;
+					}
+				}
+			})
+			
+			$("#btn_log").click(function(){
+				change();
+			})
+			function change(){
+				$.ajax({
+					type:"get",
+					url:"http://localhost:8080/apply.lxl.ls.1001/stdupdate",
+					async:true,
+					data:{
+						id:$("#idcard").val().trim(),
+						oldpassword:$("#oldpassword").val().trim(),
+						newpassword:$("#newpassword").val().trim()
+					},success:function(res){
+						var Objres=JSON.parse(res);
+						if(Objres.status==0){
+							window.location.href="stdlog.html";
+							alert(Objres.msg);
+						}else{
+							alert(Objres.msg);
+							return;
+						}
+					},error:function(e){
+						console.log(e);
+					}
+				});
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				border: none;
+				outline: none;
+			}
+		.question{
+			width: 500px;
+			height: auto;
+			margin: 0 auto;
+		}
+		.question>p{
+			width: 100%;
+			font-size: 16px;
+			/*cursor:default;*/
+		}
+		</style>
+	</head>
+	<body onload="greet()">
+		 
+	<p style="text-align: center; border: 1px soid #555555;margin: 0 auto;">请输入考生身份证号：<input type="text" placeholder="证件号" id="idcard"  maxlength="18"/></p>
+	 <div style="width: 100%;">
+	 	<h4 style="width: 100%;text-align: center;">超级基础测试</h4>
+	 </div>
+	 
+	 <div class="question">
+	 	<p id="1">1:1+1=</p>
+	 		<label ><input type="radio" name="answer1"  value="0" />1</label><br />
+	 		<label ><input type="radio" name="answer1"  value="10" />2</label><br />
+	 		<label ><input type="radio" name="answer1"  value="0" />4</label><br />
+	 		<label ><input type="radio" name="answer1"  value="0" />60</label><br />
+	 	
+	 </div>
+	 <div class="question">
+	 	<p id="2">2:2+1=</p>
+	 	<label><input type="radio" name="answer2"  value="0" />2</label><br />
+	 	<label><input type="radio" name="answer2"  value="0" />0</label><br />
+	 	<label><input type="radio" name="answer2"  value="0" />x</label><br />
+	 	<label><input type="radio" name="answer2"  value="10" />3</label><br />
+	 </div>
+	 
+	 <div class="question">
+	 	<p id="3">3:我这题你会么=</p>
+	 	<label><input type="radio" name="answer3"  value="0" />2</label><br />
+	 	<label><input type="radio" name="answer3"  value="0" />0</label><br />
+	 	<label><input type="radio" name="answer3"  value="0" />x</label><br />
+	 	<label><input type="radio" name="answer3"  value="10" />一定会</label><br />
+	 </div>
+	 <div style="width: 100%;text-align: center;">
+	 <button
+	 	 type="button" id="btn" onclick="and()">提交成绩</button>
+	 <button type="button" onclick="showWrong()">查错</button>
+	 
+	 <p style="width: 400px;
+	 	height: 40px;
+	 	margin: 10px auto;
+	 	"><a href="stdtestmax.html"> 测试完去考试吧</a></p>
+	 </div>
+	</body>
+	<script type="text/javascript">
+		var a=document.getElementById("btn");
+//		a.addEventListener("click",ajax,false)
+		a.addEventListener("click",ad,false);
+		
+        function ad(){
+		Array.prototype.slice.call(document.getElementsByTagName("input")).map(i=>i.disabled=true);
+        Array.prototype.slice.call(document.getElementById("btn")).map(i=>i.disabled=true)	
+        }
+		
+		
+		/*function ajax(){
+			ajax({
+				type:"get",
+				url:"http://localhost:8080/apply.lxl.ls.1001/TcLog",
+				async:true,
+				data:{
+					id:document.getElementById("idcard"),
+					score:parseInt(score)
+				},success:function(res){
+					var Objres=JSON.parse(res);
+					if(Objres.status==0){
+						alert(Objres.msg)
+					}
+						alert(Objres.msg)
+					
+				},error:function(e){
+					console.log(e);
+				}
+			});
+		}*/
+		
+		function greet(){
+			var time=new Date().getHours();
+			if(time<12){
+				alert("上午好同学")
+			}
+			else if(time>12&&time<18){
+				alert("下午好同学")
+			}else{
+				alert("晚上好同学")
+			}
+		}
+		//哪个错啦
+		function showWrong(){
+			var question=document.getElementsByClassName("question");
+			
+			for(var i=0;i<question.length;i++){
+				
+				var answer=document.getElementsByName("answer"+(i+1));
+				for (var j=0;j<answer.length;j++) {
+					if(answer[j].checked){
+						if(answer[j].value*1<=0){
+							var x=document.getElementById(i+1);
+							x.style.color="red";
+						}
+					}
+				}
+			}
+			for(var i=0;i<question.length;i++){
+				var answer=document.getElementsByClassName("question");
+				for (var j=0;j<answer.length;j++) {
+					if(!answer[j].checked){
+						if(answer[j].value*1>0){
+							answer[j].style.color="red";
+						}
+					}
+				}
+			}
+		}
+			var score=0;
+		
+		//总成绩
+		function and(){
+			var score=0;
+			var question=document.getElementsByClassName("question");
+			for (var i=0;i<question.length;i++) {
+				var cout=0;
+				var wrong=1;
+				var answer=document.getElementsByName("answer"+(i+1));
+				for (var j=0;j<answer.length;j++) {
+					if(answer[j].checked){
+						if(answer[j].value*1<0){
+							wrong=0;
+							break;
+						}else{
+							cout+=answer[j].value*1;
+						}
+					}
+				}if(wrong==1){
+					score+=cout;
+				}
+			}
+			alert("你的成绩是"+score)
+		}
+	</script>
+</html>

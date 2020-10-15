@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				outline: none;
+			}
+			
+			.k {
+				height: 10px;
+			}
+			
+			.log {
+				width: 500px;
+				height: 460px;
+				margin: 50px auto;
+				background: whitesmoke;
+				padding: 40px 0 0 0;
+			}
+			
+			.log>input {
+				display: block;
+				width: 300px;
+				height: 40px;
+				background: white;
+				margin: 30px auto 0;
+			}
+			
+			.log>input:first-child {
+				margin: 70px auto 0;
+			}
+			
+			.code {
+				display: inline;
+				width: 100%;
+				cursor: help;
+			}
+			
+			.yy {
+				width: 300px;
+				margin: 0px auto;
+				position: relative;
+			}
+			
+			.btn {
+				display: block;
+				width: 200px;
+				height: 40px;
+				background: greenyellow;
+				border: none;
+				font-size: large;
+				line-height: 40px;
+				text-align: center;
+				margin: 40px auto 0;
+			}
+			
+			.title {
+				width: 100%;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				font-size: medium;
+			}
+			.change_tcpassword{
+				display: block;
+				text-decoration: none;
+				width: 300px;
+				height: 12px;
+				margin: 0 auto;
+				font-size: 12px;
+				text-align: right;
+				color: #555;
+			}
+			.change_tcpassword:hover{
+				color: orange;
+			}
+			.ono{
+				border-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="k"></div>
+
+		<div class="log">
+			<p class="title"> <b>教师端登录</b></p>
+			
+			<input type="text" placeholder="老师名" class="username" />
+			<input type="password" placeholder="密码" class="password" />
+			<a class="change_tcpassword" href="tcchange.html">修改密码</a>
+			<button type="button " class="btn"><b>登录</b></button>
+		</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function() {
+			
+			$(".username").focus();
+			$(".username").keyup(function(){
+				var ent=event.which||event.keyCode;
+				if(ent==13){
+					var nm=$(this).val().trim();
+					var n=/^[\u4e00-\u9fa5]{2,4}$/;
+					var nn=n.test(nm);
+					if(nn==true){
+						$(".password").focus();
+						$(this).removeClass("ono")
+					}else{
+						$(this).attr("placeholder","格式错误").addClass("ono");
+						$(this).val("格式为2-4位汉字").select();
+						return;
+					}
+				}
+			})
+			
+			$(".btn").click(function() {
+				$.ajax({
+					type: "get",
+					url: "http://localhost:8080/apply.lxl.ls.1001/TcLog",
+					async: true,
+					data: {
+						username: $(".username").val().trim(),
+						password: $(".password").val().trim()
+						
+					},
+					success: function(result) {
+						console.log(result);
+						
+						var dataObj = JSON.parse(result);
+						console.log(dataObj);
+						console.log(dataObj.status);
+						
+						if (dataObj.status == 0) {
+							window.location.href = "midtc.html";
+						}
+						alert(dataObj.msg);
+						console.log(dataObj);
+
+					},
+					error: function(ee) {
+						console.log(ee);
+					}
+				});
+			})
+		})
+	</script>
+
+</html>
