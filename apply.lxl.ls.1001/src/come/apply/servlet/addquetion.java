@@ -12,19 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.apply.dao.Dao;
-import com.apply.pojo.TcPojo;
 
 /**
- * Servlet implementation class tccg
+ * Servlet implementation class addquetion
  */
-@WebServlet("/tccg")
-public class tccg extends HttpServlet {
+@WebServlet("/addquetion")
+public class addquetion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tccg() {
+    public addquetion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,38 +38,27 @@ public class tccg extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Headers","*");
 		response.setHeader("Access-Control-Allow-Credentials","true");
 		
-		String username=request.getParameter("username");
-		String oldpassword=request.getParameter("oldpassword");
-		String newpassword=request.getParameter("newpassword");
-		//System.out.println(username);
-		//System.out.println(oldpassword);
 		
-		String res="";
+		String question=request.getParameter("question");
+		String a=request.getParameter("a");
+		String b=request.getParameter("b");
+		String c=request.getParameter("c");
+		String d=request.getParameter("d");
+		String answ=request.getParameter("answ");
 		
-		Dao d=new Dao();
-        int status=0;
-		boolean bb=d.ishadtc(username);
-		if (bb) {
-			TcPojo tp=d.selecttcpw(username);
-			System.out.println(tp.getPassword());
-			if(oldpassword.equals(tp.getPassword())){
-			    d.tcccpw(username, newpassword);
-				System.out.println(tp.getPassword());
-				res="密码修改成功"+newpassword;
-				status=0;
-			}else{
-				status=2;
-				res="检查之前密码是否正确";
-			}
+		Dao da=new Dao();
+		Map<String, Object> mp=new HashMap<>();
+		int i=da.addqt(question, a, b, c, d, answ);
+		if(i>0){
+			mp.put("msg", "ok");
+			mp.put("status", 0);
+			mp.put("result", i);
 		}else{
-			status=3;
-			res="再次确认用户名";
+			mp.put("msg", "no");
+			mp.put("result", 2);
 		}
-		Map<String , Object> mp=new HashMap<>();
-		mp.put("msg", res);
-		mp.put("status", status);
 		response.setContentType("text/html;charset=utf-8");
-		  response.getWriter().println(JSON.toJSON(mp));
+		 response.getWriter().println(JSON.toJSON(mp));
 	}
 
 	/**

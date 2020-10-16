@@ -9,6 +9,7 @@
 				margin: 0;
 				padding: 0;
 				outline: none;
+				-webkit-user-select: none;
 			}
 			
 			.log {
@@ -173,7 +174,7 @@
 					<input type="password" id="password" placeholder="密码" maxlength="16" />
 					<div class="pw_msg"></div>
 					<p>
-						<a href=""><i>修改密码</i></a>
+						<a href="stdcgpassword.html"><i>修改密码</i></a>
 					</p>
 					<button type="button" id="btn_log">登录</button>
 				</li>
@@ -275,8 +276,10 @@
 						var Obres = JSON.parse(res);
 						if(Obres.status == 0) {
 							window.location.href = "stdTest.html";
+						}else{
+							
+							alert(Obres.msg);
 						}
-						alert(Obres.msg);
 					}
 				});
 			}

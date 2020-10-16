@@ -12,19 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.apply.dao.Dao;
-import com.apply.pojo.TcPojo;
+import com.apply.pojo.Pojo;
 
 /**
- * Servlet implementation class tccg
+ * Servlet implementation class stdupdate
  */
-@WebServlet("/tccg")
-public class tccg extends HttpServlet {
+@WebServlet("/stdupdate")
+public class stdupdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tccg() {
+    public stdupdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,38 +39,36 @@ public class tccg extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Headers","*");
 		response.setHeader("Access-Control-Allow-Credentials","true");
 		
-		String username=request.getParameter("username");
+		String id=request.getParameter("id");
 		String oldpassword=request.getParameter("oldpassword");
 		String newpassword=request.getParameter("newpassword");
-		//System.out.println(username);
-		//System.out.println(oldpassword);
 		
 		String res="";
-		
 		Dao d=new Dao();
-        int status=0;
-		boolean bb=d.ishadtc(username);
+		
+		int status=0;
+		boolean bb=d.ishad(id);
 		if (bb) {
-			TcPojo tp=d.selecttcpw(username);
-			System.out.println(tp.getPassword());
-			if(oldpassword.equals(tp.getPassword())){
-			    d.tcccpw(username, newpassword);
-				System.out.println(tp.getPassword());
-				res="密码修改成功"+newpassword;
-				status=0;
+			Pojo pj=d.selectStd(id);
+			if (oldpassword.equals(pj.getPassword())) {
+              d.updata(id, newpassword);
+              res="密码修改成功："+newpassword;
+              status=0;
 			}else{
-				status=2;
-				res="检查之前密码是否正确";
+				res="密码错误";
+				status=1;
 			}
 		}else{
-			status=3;
-			res="再次确认用户名";
+			res="未找到此证件号";
+			status=2;
 		}
-		Map<String , Object> mp=new HashMap<>();
+		
+		Map<String, Object> mp=new HashMap<>();
 		mp.put("msg", res);
 		mp.put("status", status);
+		
 		response.setContentType("text/html;charset=utf-8");
-		  response.getWriter().println(JSON.toJSON(mp));
+		response.getWriter().println(JSON.toJSON(mp));
 	}
 
 	/**

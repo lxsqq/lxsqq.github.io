@@ -9,6 +9,7 @@
 				margin: 0;
 				padding: 0;
 				outline: none;
+				-webkit-user-select: none;
 			}
 			
 			.k {
@@ -275,7 +276,8 @@
 					console.log(dd);
 					if(dd == true) {
 						
-						ai();
+						$(this).removeClass("boooo");
+						
 					} else {
 						$(this).addClass("boooo");
 						return;
@@ -314,7 +316,7 @@
 				var sp = $(".surepassword").val();
 				var nmm = $("username").val();
 				var pw = $("password").val();
-				if(p1 == "" || i == "" || nm == "" || sp == "" || sp == "" || nmm == "" || pw == "") {
+				if(p1 == "" || i == "" || nm == "" || sp == "" ||  nmm == "" || pw == "") {
 					alert("内容不能为空")
 					return;
 				}
@@ -330,7 +332,7 @@
 						var Objres = JSON.parse(res);
 						if(Objres.status == 0) {
 							//alert(Objres.msg);
-							window.location.href = "mid.html";
+//							window.location.href = "mid.html";
 							ai();
 						} else {
 
@@ -389,8 +391,10 @@
 						var resObj = JSON.parse(res);
 						if(resObj.status == 0) {
 							alert(resObj.msg);
-							//window.location.href="mid.html";
+							window.location.href="mid.html";
 						}
+							alert(resObj.msg);
+						
 					},
 					error: function(e) {
 						console.log(e);

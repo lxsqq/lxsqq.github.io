@@ -12,19 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
 import com.apply.dao.Dao;
+import com.apply.pojo.Pojo;
 import com.apply.pojo.TcPojo;
 
 /**
- * Servlet implementation class tccg
+ * Servlet implementation class stdupdatepw
  */
-@WebServlet("/tccg")
-public class tccg extends HttpServlet {
+@WebServlet("/stdupdatepw")
+public class stdupdatepw extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public tccg() {
+    public stdupdatepw() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,23 +40,23 @@ public class tccg extends HttpServlet {
 		response.setHeader("Access-Control-Allow-Headers","*");
 		response.setHeader("Access-Control-Allow-Credentials","true");
 		
-		String username=request.getParameter("username");
+		String id=request.getParameter("id");
 		String oldpassword=request.getParameter("oldpassword");
 		String newpassword=request.getParameter("newpassword");
-		//System.out.println(username);
-		//System.out.println(oldpassword);
+		System.out.println(id);
+		System.out.println(oldpassword);
 		
 		String res="";
 		
 		Dao d=new Dao();
         int status=0;
-		boolean bb=d.ishadtc(username);
+	 boolean bb=d.ishad(id);
 		if (bb) {
-			TcPojo tp=d.selecttcpw(username);
-			System.out.println(tp.getPassword());
-			if(oldpassword.equals(tp.getPassword())){
-			    d.tcccpw(username, newpassword);
-				System.out.println(tp.getPassword());
+			Pojo pj=d.stdpassword(id);
+			System.out.println(d.stdpassword(id));
+			if(oldpassword.equals(pj.getPassword())){
+			   d.stdupdate(id, newpassword);
+				System.out.println(pj.getPassword());
 				res="密码修改成功"+newpassword;
 				status=0;
 			}else{
@@ -64,7 +65,7 @@ public class tccg extends HttpServlet {
 			}
 		}else{
 			status=3;
-			res="再次确认用户名";
+			res="再次身份证号";
 		}
 		Map<String , Object> mp=new HashMap<>();
 		mp.put("msg", res);
